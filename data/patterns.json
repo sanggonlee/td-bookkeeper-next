@@ -1,0 +1,92 @@
+[
+  {
+    "label": "Pay",
+    "patterns": [
+    ]
+  },
+  {
+    "label": "Tax",
+    "patterns": [
+    ]
+  },
+  {
+    "label": "Mort/Maint",
+    "patterns": [
+    ]
+  },
+  {
+    "label": "Cash Withdrawl",
+    "patterns": [
+    ]
+  },
+  {
+    "label": "E-Transfer",
+    "patterns": [
+    ]
+  },
+  {
+    "label": "Transfer",
+    "patterns": [
+    ]
+  },
+  {
+    "label": "Food",
+    "patterns": [
+    ]
+  },
+  {
+    "label": "Transportation",
+    "patterns": [
+    ]
+  },
+  {
+    "label": "Travel",
+    "patterns": [
+    ]
+  },
+  {
+    "label": "Internet/Phone",
+    "patterns": [
+    ]
+  },
+  {
+    "label": "Charity",
+    "patterns": [
+    ]
+  },
+  {
+    "label": "Amazon",
+    "patterns": [
+    ]
+  },
+  {
+    "label": "Medical",
+    "patterns": [
+    ]
+  },
+  {
+    "label": "Bank",
+    "patterns": [
+    ]
+  },
+  {
+    "label": "OSAP",
+    "patterns": [
+    ]
+  },
+  {
+    "label": "Learning",
+    "patterns": [
+    ]
+  },
+  {
+    "label": "Dog",
+    "patterns": [
+    ]
+  },
+  {
+    "label": "Etc",
+    "patterns": [
+    ]
+  }
+]

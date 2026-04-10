@@ -1,7 +1,11 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  compiler: {
+    styledComponents: true,
+  },
+  // xlsx is a CommonJS module; prevent webpack from bundling it in API routes
+  serverExternalPackages: ['xlsx'],
+}
 
-export default nextConfig;
+export default nextConfig
