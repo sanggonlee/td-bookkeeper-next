@@ -4,48 +4,44 @@ import type { PatternsFile, SeenFile, HistoryFile } from './types'
 import { encryptHistory, decryptHistory, encryptSeen, decryptSeen } from './obfuscate'
 
 // ---------------------------------------------------------------------------
-// Storage provider: Vercel Blob (production) or local filesystem (development)
+// Storage provider
 //
-// Vercel Blob is used when BLOB_READ_WRITE_TOKEN is present (auto-injected by
-// Vercel when you link a Blob store to the project).
+// Production (STORAGE_KV_REST_API_URL set): Upstash Redis via REST API.
+// Development (no env var): local JSON files in data/.
+//
+// Redis key namespace: "bk:" prefix for all keys.
+//   bk:patterns          → PatternsFile (JSON, plaintext)
+//   bk:seen              → SeenFile (JSON, keys obfuscated)
+//   bk:history:YYYY-MM   → HistoryFile (JSON, values obfuscated)
 // ---------------------------------------------------------------------------
 
-const useBlob = !!process.env.BLOB_READ_WRITE_TOKEN
+const useRedis = !!process.env.STORAGE_KV_REST_API_URL
 
-// -- Blob helpers (lazy import so the module is tree-shaken in local builds) --
+// -- Redis helpers -----------------------------------------------------------
 
-async function blobRead(pathname: string): Promise<string | null> {
-  const { list } = await import('@vercel/blob')
-  const { blobs } = await list({ prefix: pathname })
-  const match = blobs.find(b => b.pathname === pathname)
-  if (!match) return null
-  const res = await fetch(match.url, { cache: 'no-store' })
-  return res.ok ? res.text() : null
-}
-
-async function blobWrite(pathname: string, content: string): Promise<void> {
-  const { put } = await import('@vercel/blob')
-  await put(pathname, content, {
-    access: 'public',
-    addRandomSuffix: false,
-    contentType: 'application/json',
+function getRedis() {
+  const { Redis } = require('@upstash/redis') as typeof import('@upstash/redis')
+  return new Redis({
+    url: process.env.STORAGE_KV_REST_API_URL!,
+    token: process.env.STORAGE_KV_REST_API_TOKEN!,
   })
 }
 
-async function blobList(prefix: string): Promise<string[]> {
-  const { list } = await import('@vercel/blob')
-  const { blobs } = await list({ prefix })
-  return blobs.map(b => b.pathname)
+async function redisGet<T>(key: string): Promise<T | null> {
+  return getRedis().get<T>(key)
 }
 
-// -- Unified read / write / list -----------------------------------------------
+async function redisSet(key: string, value: unknown): Promise<void> {
+  await getRedis().set(key, value)
+}
 
-async function readRaw(relativePath: string): Promise<string | null> {
-  if (useBlob) {
-    // Try blob first; fall back to the committed filesystem copy (e.g. patterns.json seed)
-    const fromBlob = await blobRead(relativePath).catch(() => null)
-    if (fromBlob !== null) return fromBlob
-  }
+async function redisKeys(pattern: string): Promise<string[]> {
+  return getRedis().keys(pattern)
+}
+
+// -- Filesystem helpers ------------------------------------------------------
+
+async function fileRead(relativePath: string): Promise<string | null> {
   try {
     return await fs.readFile(path.join(process.cwd(), relativePath), 'utf-8')
   } catch {
@@ -53,11 +49,7 @@ async function readRaw(relativePath: string): Promise<string | null> {
   }
 }
 
-async function writeRaw(relativePath: string, content: string): Promise<void> {
-  if (useBlob) {
-    await blobWrite(relativePath, content)
-    return
-  }
+async function fileWrite(relativePath: string, content: string): Promise<void> {
   const fullPath = path.join(process.cwd(), relativePath)
   const tmp = fullPath + '.tmp'
   await fs.mkdir(path.dirname(fullPath), { recursive: true })
@@ -65,23 +57,21 @@ async function writeRaw(relativePath: string, content: string): Promise<void> {
   await fs.rename(tmp, fullPath)
 }
 
-async function listRaw(prefix: string): Promise<string[]> {
-  if (useBlob) {
-    return blobList(prefix)
-  }
-  try {
-    const dir = path.join(process.cwd(), prefix)
-    const files = await fs.readdir(dir)
-    return files.filter(f => f !== '.gitkeep').map(f => `${prefix}/${f}`)
-  } catch {
-    return []
-  }
-}
+// -- Generic JSON read / write -----------------------------------------------
 
-// -- Generic JSON helpers -------------------------------------------------------
-
-async function readJson<T>(relativePath: string, fallback: T): Promise<T> {
-  const raw = await readRaw(relativePath)
+async function readJson<T>(key: string, fallback: T): Promise<T> {
+  if (useRedis) {
+    const value = await redisGet<T>(`bk:${key}`)
+    // Redis returns parsed JSON automatically; fall back to filesystem seed
+    // for patterns (committed to git) when Redis has no value yet.
+    if (value !== null) return value
+    if (key === 'patterns') {
+      const raw = await fileRead('data/patterns.json')
+      return raw ? (JSON.parse(raw) as T) : fallback
+    }
+    return fallback
+  }
+  const raw = await fileRead(`data/${key}.json`)
   if (raw === null) return fallback
   try {
     return JSON.parse(raw) as T
@@ -90,49 +80,61 @@ async function readJson<T>(relativePath: string, fallback: T): Promise<T> {
   }
 }
 
-async function writeJson(relativePath: string, data: unknown): Promise<void> {
-  await writeRaw(relativePath, JSON.stringify(data, null, 2))
+async function writeJson(key: string, value: unknown): Promise<void> {
+  if (useRedis) {
+    await redisSet(`bk:${key}`, value)
+    return
+  }
+  await fileWrite(`data/${key}.json`, JSON.stringify(value, null, 2))
 }
 
-// -- Public API ----------------------------------------------------------------
+// -- Public API --------------------------------------------------------------
 
 export async function readPatterns(): Promise<PatternsFile> {
-  return readJson<PatternsFile>('data/patterns.json', [])
+  return readJson<PatternsFile>('patterns', [])
 }
 
 export async function writePatterns(data: PatternsFile): Promise<void> {
-  return writeJson('data/patterns.json', data)
+  return writeJson('patterns', data)
 }
 
 export async function readSeen(): Promise<SeenFile> {
-  const raw = await readJson<Record<string, string>>('data/seen.json', {})
+  const raw = await readJson<Record<string, string>>('seen', {})
   return decryptSeen(raw)
 }
 
 export async function writeSeen(data: SeenFile): Promise<void> {
-  return writeJson('data/seen.json', encryptSeen(data))
+  return writeJson('seen', encryptSeen(data))
 }
 
 export async function readHistory(yearMonth: string): Promise<HistoryFile> {
-  const raw = await readJson<Record<string, string>>(
-    `data/history/${yearMonth}.json`, {}
-  )
+  const raw = await readJson<Record<string, string>>(`history:${yearMonth}`, {})
   return decryptHistory(raw)
 }
 
 export async function writeHistory(yearMonth: string, data: HistoryFile): Promise<void> {
-  return writeJson(`data/history/${yearMonth}.json`, encryptHistory(data))
+  return writeJson(`history:${yearMonth}`, encryptHistory(data))
 }
 
 export async function readAllHistory(): Promise<Record<string, HistoryFile>> {
   try {
-    const paths = await listRaw('data/history')
-    const jsonPaths = paths.filter(p => p.endsWith('.json'))
+    let yearMonths: string[]
+
+    if (useRedis) {
+      const keys = await redisKeys('bk:history:*')
+      yearMonths = keys.map(k => k.replace('bk:history:', ''))
+    } else {
+      const dir = path.join(process.cwd(), 'data', 'history')
+      const files = await fs.readdir(dir)
+      yearMonths = files
+        .filter(f => f.endsWith('.json') && f !== '.gitkeep')
+        .map(f => f.replace('.json', ''))
+    }
+
     const entries = await Promise.all(
-      jsonPaths.map(async (p) => {
-        const key = path.basename(p, '.json')
-        const raw = await readJson<Record<string, string>>(p, {})
-        return [key, decryptHistory(raw)] as [string, HistoryFile]
+      yearMonths.map(async ym => {
+        const raw = await readJson<Record<string, string>>(`history:${ym}`, {})
+        return [ym, decryptHistory(raw)] as [string, HistoryFile]
       })
     )
     return Object.fromEntries(entries.sort((a, b) => a[0].localeCompare(b[0])))
