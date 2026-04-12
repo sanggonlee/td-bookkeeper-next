@@ -31,11 +31,11 @@ export async function computeToken(code: string): Promise<string> {
 
 /**
  * Verify a cookie token against the configured ACCESS_CODE.
- * Returns true when no ACCESS_CODE is set (open access in dev).
+ * Throws if ACCESS_CODE is not set — the env var is required in all environments.
  */
 export async function verifyToken(token: string): Promise<boolean> {
   const code = process.env.ACCESS_CODE
-  if (!code) return true
+  if (!code) throw new Error('ACCESS_CODE environment variable is not set')
   const expected = await computeToken(code)
   return token === expected
 }

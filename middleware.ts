@@ -18,7 +18,7 @@ export async function middleware(request: NextRequest) {
   }
 
   const token = request.cookies.get(SESSION_COOKIE)?.value ?? ''
-  const valid = await verifyToken(token)
+  const valid = await verifyToken(token).catch(() => false)
 
   if (!valid) {
     const loginUrl = new URL('/login', request.url)

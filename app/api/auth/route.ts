@@ -15,10 +15,10 @@ export async function POST(request: Request) {
 
   const expected = process.env.ACCESS_CODE
   if (!expected) {
-    // No gate configured — always succeed
-    const cookieStore = await cookies()
-    cookieStore.set(SESSION_COOKIE, 'open', COOKIE_OPTS)
-    return NextResponse.json({ ok: true })
+    return NextResponse.json(
+      { error: 'ACCESS_CODE is not configured on the server' },
+      { status: 500 }
+    )
   }
 
   if (!code || code !== expected) {
