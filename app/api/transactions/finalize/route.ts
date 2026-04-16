@@ -5,6 +5,7 @@ import {
   writePatterns,
   writeSeen,
   writeHistory,
+  writeTransactionArchive,
 } from '@/lib/storage'
 import type { FinalizePayload, CategorizedTransaction } from '@/lib/types'
 
@@ -58,6 +59,7 @@ export async function POST(request: Request) {
   history['Total'] = total
 
   await writeHistory(yearMonth, history)
+  await writeTransactionArchive(yearMonth, resolved)
 
   return NextResponse.json({ ok: true, yearMonth })
 }

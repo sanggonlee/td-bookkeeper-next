@@ -1,0 +1,666 @@
+[
+  {
+    "date": "2026-01-20",
+    "description": "MEMBERSHIP FEE INSTALLMENT",
+    "inflow": 0,
+    "outflow": 12.99,
+    "source": "amex",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-01-19",
+    "description": "FIDO MOBILE ******0912  888-481-3436",
+    "inflow": 0,
+    "outflow": 89.27,
+    "source": "amex",
+    "category": "Internet/Phone"
+  },
+  {
+    "date": "2026-01-19",
+    "description": "GALLERIA SUPERMARKET    NORTH YORK",
+    "inflow": 0,
+    "outflow": 52.3,
+    "source": "amex",
+    "category": "Food"
+  },
+  {
+    "date": "2026-01-19",
+    "description": "STAPLES STORE #3        TORONTO",
+    "inflow": 0,
+    "outflow": 0.21,
+    "source": "amex",
+    "category": "Etc"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "FARM BOY #33 TORONTO    TORONTO",
+    "inflow": 0,
+    "outflow": 13.97,
+    "source": "amex",
+    "category": "Food"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "THE HOME DEPOT #7073    EAST YORK",
+    "inflow": 0,
+    "outflow": 22.58,
+    "source": "amex",
+    "category": "Etc"
+  },
+  {
+    "date": "2026-01-17",
+    "description": "ESSO CIRCLE K           TORONTO",
+    "inflow": 0,
+    "outflow": 39.85,
+    "source": "amex",
+    "category": "Transportation"
+  },
+  {
+    "date": "2026-01-16",
+    "description": "PURE FITNESS 201920206  TORONTO",
+    "inflow": 0,
+    "outflow": 89.27,
+    "source": "amex",
+    "category": "Etc"
+  },
+  {
+    "date": "2026-01-16",
+    "description": "UBER EATS               HTTPS://HELP.UB",
+    "inflow": 0,
+    "outflow": 32.94,
+    "source": "amex",
+    "category": "Food"
+  },
+  {
+    "date": "2026-01-12",
+    "description": "GOOGLE *YOUTUBEPREMIUM  G.CO/HELPPAY#",
+    "inflow": 0,
+    "outflow": 14.68,
+    "source": "amex",
+    "category": "Etc"
+  },
+  {
+    "date": "2026-01-11",
+    "description": "FARM BOY #33 TORONTO    TORONTO",
+    "inflow": 0,
+    "outflow": 20.09,
+    "source": "amex",
+    "category": "Food"
+  },
+  {
+    "date": "2026-01-10",
+    "description": "LIT ESPRESSO BAR 001    TORONTO",
+    "inflow": 0,
+    "outflow": 4.98,
+    "source": "amex",
+    "category": "Food"
+  },
+  {
+    "date": "2026-01-10",
+    "description": "NETFLIX.COM             866-716-0414",
+    "inflow": 0,
+    "outflow": 9.03,
+    "source": "amex",
+    "category": "Etc"
+  },
+  {
+    "date": "2026-01-07",
+    "description": "CHALICE(CANADA)         BEDFORD",
+    "inflow": 0,
+    "outflow": 42,
+    "source": "amex",
+    "category": "Charity"
+  },
+  {
+    "date": "2026-01-07",
+    "description": "SP WWW.ROVR.CA          TORONTO",
+    "inflow": 0,
+    "outflow": 109.6,
+    "source": "amex",
+    "category": "Dog"
+  },
+  {
+    "date": "2026-01-07",
+    "description": "UBER EATS               HTTPS://HELP.UB",
+    "inflow": 0,
+    "outflow": 27.79,
+    "source": "amex",
+    "category": "Food"
+  },
+  {
+    "date": "2026-01-04",
+    "description": "GALLERIA SUPERMARKET    NORTH YORK",
+    "inflow": 0,
+    "outflow": 30.15,
+    "source": "amex",
+    "category": "Food"
+  },
+  {
+    "date": "2026-01-03",
+    "description": "TORONTO PARKING AUTHORI TORONTO",
+    "inflow": 0,
+    "outflow": 24,
+    "source": "amex",
+    "category": "Transportation"
+  },
+  {
+    "date": "2026-01-02",
+    "description": "UBER EATS               HTTPS://HELP.UB",
+    "inflow": 0,
+    "outflow": 4.57,
+    "source": "amex",
+    "category": "Food"
+  },
+  {
+    "date": "2026-01-02",
+    "description": "UBER EATS               HTTPS://HELP.UB",
+    "inflow": 0,
+    "outflow": 25.41,
+    "source": "amex",
+    "category": "Food"
+  },
+  {
+    "date": "2026-01-01",
+    "description": "PHI DIRECT              NORTH VANCOUVER",
+    "inflow": 0,
+    "outflow": 72.73,
+    "source": "amex",
+    "category": "Dog"
+  },
+  {
+    "date": "2026-01-01",
+    "description": "SHELL C02525            TORONTO",
+    "inflow": 0,
+    "outflow": 29.8,
+    "source": "amex",
+    "category": "Transportation"
+  },
+  {
+    "date": "2026-01-31",
+    "description": "LIT ESPRESSO BAR 001    TORONTO",
+    "inflow": 0,
+    "outflow": 4.98,
+    "source": "amex",
+    "category": "Food"
+  },
+  {
+    "date": "2026-01-28",
+    "description": "FELIX HEALTH INC.       TORONTO",
+    "inflow": 0,
+    "outflow": 54.47,
+    "source": "amex",
+    "category": "Medical"
+  },
+  {
+    "date": "2026-01-28",
+    "description": "GOOGLE *CLASH OF CLANS  G.CO/HELPPAY#",
+    "inflow": 0,
+    "outflow": 7.9,
+    "source": "amex",
+    "category": "Etc"
+  },
+  {
+    "date": "2026-01-28",
+    "description": "SECURITY NATIONAL INSU  MONTREAL",
+    "inflow": 0,
+    "outflow": 236.19,
+    "source": "amex",
+    "category": "Transportation"
+  },
+  {
+    "date": "2026-01-28",
+    "description": "UBER EATS               HTTPS://HELP.UB",
+    "inflow": 0,
+    "outflow": 5.25,
+    "source": "amex",
+    "category": "Food"
+  },
+  {
+    "date": "2026-01-28",
+    "description": "UBER EATS               HTTPS://HELP.UB",
+    "inflow": 0,
+    "outflow": 29.21,
+    "source": "amex",
+    "category": "Food"
+  },
+  {
+    "date": "2026-01-25",
+    "description": "MEDIUM MONTHLY          SAN FRANCISCO",
+    "inflow": 0,
+    "outflow": 7.07,
+    "source": "amex",
+    "category": "Learning"
+  },
+  {
+    "date": "2026-01-24",
+    "description": "AUBERGE DU POMMIER      NORTH YORK",
+    "inflow": 0,
+    "outflow": 2500,
+    "source": "amex",
+    "category": "Food"
+  },
+  {
+    "date": "2026-01-23",
+    "description": "GOOGLE *PLAY BOOKS      G.CO/HELPPAY#",
+    "inflow": 0,
+    "outflow": 9.97,
+    "source": "amex",
+    "category": "Etc"
+  },
+  {
+    "date": "2026-01-23",
+    "description": "GOOGLE*PLAY BOOKS GOOGL G.CO HELPPAY#",
+    "inflow": 0,
+    "outflow": 9.97,
+    "source": "amex",
+    "category": "Etc"
+  },
+  {
+    "date": "2026-01-23",
+    "description": "GOOGLE*PLAY BOOKS GOOGL G.CO HELPPAY#",
+    "inflow": 0,
+    "outflow": 9.97,
+    "source": "amex",
+    "category": "Etc"
+  },
+  {
+    "date": "2026-01-21",
+    "description": "PAYMENT RECEIVED - THANK YOU",
+    "inflow": 1488.59,
+    "outflow": 0,
+    "source": "amex",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-01-21",
+    "description": "UBER EATS               HTTPS://HELP.UB",
+    "inflow": 0,
+    "outflow": 34.64,
+    "source": "amex",
+    "category": "Food"
+  },
+  {
+    "date": "2026-01-20",
+    "description": "SECURITY NATIONAL INSU  MONTREAL",
+    "inflow": 0,
+    "outflow": 93.24,
+    "source": "amex",
+    "category": "Transportation"
+  },
+  {
+    "date": "2026-01-02",
+    "description": "PAYPAL           MSP",
+    "inflow": 0,
+    "outflow": 4.58,
+    "source": "td",
+    "category": "Etc"
+  },
+  {
+    "date": "2026-01-02",
+    "description": "TSCC 1664        MSP",
+    "inflow": 0,
+    "outflow": 497.37,
+    "source": "td",
+    "category": "Mort/Maint"
+  },
+  {
+    "date": "2026-01-05",
+    "description": "260105S0412800WIRE",
+    "inflow": 1573.73,
+    "outflow": 0,
+    "source": "td",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-01-05",
+    "description": "SCOTIABANK       INV",
+    "inflow": 0,
+    "outflow": 1600,
+    "source": "td",
+    "category": "Bank"
+  },
+  {
+    "date": "2026-01-06",
+    "description": "SEND E-TFR ***vGH",
+    "inflow": 0,
+    "outflow": 90,
+    "source": "td",
+    "category": "E-Transfer"
+  },
+  {
+    "date": "2026-01-06",
+    "description": "SEND E-TFR ***PaM",
+    "inflow": 0,
+    "outflow": 1573.73,
+    "source": "td",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-01-06",
+    "description": "BNS MTGE DEPT    MTG",
+    "inflow": 0,
+    "outflow": 1479.29,
+    "source": "td",
+    "category": "Mort/Maint"
+  },
+  {
+    "date": "2026-01-06",
+    "description": "BNS MTGE DEPT    MTG",
+    "inflow": 0,
+    "outflow": 1922.23,
+    "source": "td",
+    "category": "Mort/Maint"
+  },
+  {
+    "date": "2026-01-07",
+    "description": "NAVAN, INC.      MSP",
+    "inflow": 29.98,
+    "outflow": 0,
+    "source": "td",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-01-07",
+    "description": "BELL CANADA      BPY",
+    "inflow": 0,
+    "outflow": 68.93,
+    "source": "td",
+    "category": "Internet/Phone"
+  },
+  {
+    "date": "2026-01-08",
+    "description": "SEND E-TFR ***Xbe",
+    "inflow": 0,
+    "outflow": 90,
+    "source": "td",
+    "category": "E-Transfer"
+  },
+  {
+    "date": "2026-01-09",
+    "description": "SEND E-TFR ***3rz",
+    "inflow": 0,
+    "outflow": 150,
+    "source": "td",
+    "category": "E-Transfer"
+  },
+  {
+    "date": "2026-01-12",
+    "description": "E-TRANSFER ***SES",
+    "inflow": 6,
+    "outflow": 0,
+    "source": "td",
+    "category": "E-Transfer"
+  },
+  {
+    "date": "2026-01-12",
+    "description": "Enbridge Gas     BPY",
+    "inflow": 0,
+    "outflow": 73.83,
+    "source": "td",
+    "category": "Mort/Maint"
+  },
+  {
+    "date": "2026-01-13",
+    "description": "NAVAN, INC.      MSP",
+    "inflow": 117.06,
+    "outflow": 0,
+    "source": "td",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-01-14",
+    "description": "SEND E-TFR ***Fzv",
+    "inflow": 0,
+    "outflow": 160,
+    "source": "td",
+    "category": "E-Transfer"
+  },
+  {
+    "date": "2026-01-15",
+    "description": "CRIBL            PAY",
+    "inflow": 4901.5,
+    "outflow": 0,
+    "source": "td",
+    "category": "Pay"
+  },
+  {
+    "date": "2026-01-19",
+    "description": "260119S0947900WIRE",
+    "inflow": 1561.31,
+    "outflow": 0,
+    "source": "td",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-01-19",
+    "description": "CARMA            BPY",
+    "inflow": 0,
+    "outflow": 121.92,
+    "source": "td",
+    "category": "Mort/Maint"
+  },
+  {
+    "date": "2026-01-20",
+    "description": "BMO VISA     W2W5Q2",
+    "inflow": 0,
+    "outflow": 907.69,
+    "source": "td",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-01-21",
+    "description": "AMEX BILL PYMT   MSP",
+    "inflow": 0,
+    "outflow": 1488.59,
+    "source": "td",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-01-22",
+    "description": "407 ETR      W8L7W5",
+    "inflow": 0,
+    "outflow": 18.08,
+    "source": "td",
+    "category": "Transportation"
+  },
+  {
+    "date": "2026-01-22",
+    "description": "E-TRANSFER ***2cm",
+    "inflow": 3000,
+    "outflow": 0,
+    "source": "td",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-01-23",
+    "description": "SEND E-TFR ***dv8",
+    "inflow": 0,
+    "outflow": 150,
+    "source": "td",
+    "category": "E-Transfer"
+  },
+  {
+    "date": "2026-01-23",
+    "description": "JX570 TFR-TO C/C",
+    "inflow": 0,
+    "outflow": 124.58,
+    "source": "td",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-01-26",
+    "description": "SEND E-TFR ***tDu",
+    "inflow": 0,
+    "outflow": 240,
+    "source": "td",
+    "category": "E-Transfer"
+  },
+  {
+    "date": "2026-01-26",
+    "description": "SEND E-TFR ***NJy",
+    "inflow": 0,
+    "outflow": 50,
+    "source": "td",
+    "category": "E-Transfer"
+  },
+  {
+    "date": "2026-01-26",
+    "description": "E-TRANSFER ***acQ",
+    "inflow": 1300,
+    "outflow": 0,
+    "source": "td",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-01-26",
+    "description": "GC 1988-DEPOSIT",
+    "inflow": 11350,
+    "outflow": 0,
+    "source": "td",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-01-26",
+    "description": "SEND E-TFR ***FDa",
+    "inflow": 0,
+    "outflow": 110,
+    "source": "td",
+    "category": "E-Transfer"
+  },
+  {
+    "date": "2026-01-26",
+    "description": "EQUITABLE LIFE   INS",
+    "inflow": 0,
+    "outflow": 120,
+    "source": "td",
+    "category": "Bank"
+  },
+  {
+    "date": "2026-01-27",
+    "description": "NAVAN, INC.      MSP",
+    "inflow": 68.93,
+    "outflow": 0,
+    "source": "td",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-01-29",
+    "description": "SEND E-TFR ***kPQ",
+    "inflow": 0,
+    "outflow": 90,
+    "source": "td",
+    "category": "E-Transfer"
+  },
+  {
+    "date": "2026-01-29",
+    "description": "TOR UTILITY  Y9U4L5",
+    "inflow": 0,
+    "outflow": 55.91,
+    "source": "td",
+    "category": "Mort/Maint"
+  },
+  {
+    "date": "2026-01-29",
+    "description": "SEND E-TFR ***QbM",
+    "inflow": 0,
+    "outflow": 348.75,
+    "source": "td",
+    "category": "E-Transfer"
+  },
+  {
+    "date": "2026-01-29",
+    "description": "SEND E-TFR ***tAR",
+    "inflow": 0,
+    "outflow": 50,
+    "source": "td",
+    "category": "E-Transfer"
+  },
+  {
+    "date": "2026-01-30",
+    "description": "CRIBL            PAY",
+    "inflow": 4901.5,
+    "outflow": 0,
+    "source": "td",
+    "category": "Pay"
+  },
+  {
+    "date": "2026-01-30",
+    "description": "MONTHLY ACCOUNT FEE",
+    "inflow": 0,
+    "outflow": 30.95,
+    "source": "td",
+    "category": "Etc"
+  },
+  {
+    "date": "2026-01-30",
+    "description": "ACCT BAL REBATE",
+    "inflow": 30.95,
+    "outflow": 0,
+    "source": "td",
+    "category": "Etc"
+  },
+  {
+    "date": "2026-01-17",
+    "description": "MY STORAGE",
+    "inflow": 0,
+    "outflow": 14.68,
+    "source": "td",
+    "category": "Etc"
+  },
+  {
+    "date": "2026-01-16",
+    "description": "COSTCO BY INSTACART",
+    "inflow": 0,
+    "outflow": 51.59,
+    "source": "td",
+    "category": "Food"
+  },
+  {
+    "date": "2026-01-16",
+    "description": "UW OFFICE OF ADVANCEME",
+    "inflow": 0,
+    "outflow": 5,
+    "source": "td",
+    "category": "Charity"
+  },
+  {
+    "date": "2026-01-11",
+    "description": "TST-Chachees Chai Cafe",
+    "inflow": 0,
+    "outflow": 9.49,
+    "source": "td",
+    "category": "Food"
+  },
+  {
+    "date": "2026-01-01",
+    "description": "AIR-SERV A AN00530",
+    "inflow": 0,
+    "outflow": 2.5,
+    "source": "td",
+    "category": "Transportation"
+  },
+  {
+    "date": "2026-01-01",
+    "description": "GOOGLE*CLOUD KVX34J",
+    "inflow": 0,
+    "outflow": 0.14,
+    "source": "td",
+    "category": "Etc"
+  },
+  {
+    "date": "2026-01-28",
+    "description": "BEATTIES",
+    "inflow": 0,
+    "outflow": 71.4,
+    "source": "td",
+    "category": "Learning"
+  },
+  {
+    "date": "2026-01-23",
+    "description": "PAYMENT - THANK YOU",
+    "inflow": 124.58,
+    "outflow": 0,
+    "source": "td",
+    "category": "Transfer"
+  }
+]

@@ -2,6 +2,7 @@
 
 import React, { useCallback, useRef, useState } from 'react'
 import styled from 'styled-components'
+import HistoricalReportsModal from './HistoricalReportsModal'
 
 interface StepUploadProps {
   onNext: (files: File[]) => void
@@ -22,8 +23,27 @@ const Title = styled.h2`
 
 const Subtitle = styled.p`
   color: #555;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   font-size: 0.95rem;
+`
+
+const HistoryLinkRow = styled.div`
+  margin-bottom: 20px;
+`
+
+const HistoryLinkButton = styled.button`
+  padding: 10px 16px;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #374151;
+  cursor: pointer;
+  &:hover {
+    background: #f9fafb;
+    border-color: #0070f3;
+    color: #0070f3;
+  }
 `
 
 interface DropZoneProps {
@@ -128,6 +148,7 @@ function formatBytes(bytes: number): string {
 export default function StepUpload({ onNext }: StepUploadProps) {
   const [files, setFiles] = useState<File[]>([])
   const [isDragging, setIsDragging] = useState(false)
+  const [historyOpen, setHistoryOpen] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
   const addFiles = useCallback((incoming: FileList | File[]) => {
@@ -168,6 +189,14 @@ export default function StepUpload({ onNext }: StepUploadProps) {
         Drag and drop your CSV or XLS/XLSX bank export files, or click to browse.
         TD, Amex, and Scotia formats are supported.
       </Subtitle>
+
+      <HistoryLinkRow>
+        <HistoryLinkButton type="button" onClick={() => setHistoryOpen(true)}>
+          View all-time saved reports
+        </HistoryLinkButton>
+      </HistoryLinkRow>
+
+      <HistoricalReportsModal open={historyOpen} onClose={() => setHistoryOpen(false)} />
 
       <DropZone
         $isDragging={isDragging}

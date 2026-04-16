@@ -5,7 +5,8 @@ const MONTH_MAP: Record<string, string> = {
   jul: '07', aug: '08', sep: '09', oct: '10', nov: '11', dec: '12',
 }
 
-function parseAmexDate(raw: string): string | null {
+function parseAmexDate(raw: string | undefined | null): string | null {
+  if (raw == null || typeof raw !== 'string') return null
   const parts = raw.trim().split(/\s+/)
   if (parts.length < 3) return null
   const [dayStr, monRaw, yearStr] = parts
@@ -18,8 +19,11 @@ function parseAmexDate(raw: string): string | null {
   return `${year}-${mon}-${String(day).padStart(2, '0')}`
 }
 
-function parseAmexAmount(flow: string, flow2: string): { inflow: number; outflow: number } {
-  const raw = flow.trim() || flow2.trim()
+function parseAmexAmount(
+  flow: string | undefined | null,
+  flow2: string | undefined | null
+): { inflow: number; outflow: number } {
+  const raw = (flow?.trim() ?? '') || (flow2?.trim() ?? '')
   const cleaned = raw.replace(/[$,]/g, '')
   if (cleaned.startsWith('-')) {
     return { inflow: Math.abs(parseFloat(cleaned)), outflow: 0 }
@@ -41,7 +45,8 @@ export function parseAmexRows(
     const [y, m] = date.split('-').map(Number)
     if (y !== year || m !== month) continue
     const { inflow, outflow } = parseAmexAmount(flow, flow2)
-    results.push({ date, description: desc.trim(), inflow, outflow, source: 'amex' })
+    const description = typeof desc === 'string' ? desc.trim() : ''
+    results.push({ date, description, inflow, outflow, source: 'amex' })
   }
   return results
 }

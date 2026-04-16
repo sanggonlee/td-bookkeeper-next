@@ -2,91 +2,154 @@
   {
     "label": "Pay",
     "patterns": [
+      "CRIBL            PAY"
     ]
   },
   {
     "label": "Tax",
-    "patterns": [
-    ]
+    "patterns": []
   },
   {
     "label": "Mort/Maint",
     "patterns": [
+      "TSCC 1664        MSP",
+      "BNS MTGE DEPT    MTG",
+      "Enbridge Gas     BPY",
+      "CARMA            BPY",
+      "TOR UTILITY  Y9U4L5"
     ]
   },
   {
     "label": "Cash Withdrawl",
-    "patterns": [
-    ]
+    "patterns": []
   },
   {
     "label": "E-Transfer",
     "patterns": [
+      "SEND E-TFR ***vGH",
+      "SEND E-TFR ***Xbe",
+      "SEND E-TFR ***3rz",
+      "E-TRANSFER ***SES",
+      "SEND E-TFR ***Fzv",
+      "SEND E-TFR ***dv8",
+      "SEND E-TFR ***tDu",
+      "SEND E-TFR ***NJy",
+      "SEND E-TFR ***FDa",
+      "SEND E-TFR ***kPQ",
+      "SEND E-TFR ***QbM",
+      "SEND E-TFR ***tAR"
     ]
   },
   {
     "label": "Transfer",
     "patterns": [
+      "MEMBERSHIP FEE INSTALLMENT",
+      "PAYMENT RECEIVED - THANK YOU",
+      "260105S0412800WIRE",
+      "SEND E-TFR ***PaM",
+      "NAVAN, INC.      MSP",
+      "260119S0947900WIRE",
+      "BMO VISA     W2W5Q2",
+      "AMEX BILL PYMT   MSP",
+      "E-TRANSFER ***2cm",
+      "JX570 TFR-TO C/C",
+      "E-TRANSFER ***acQ",
+      "GC 1988-DEPOSIT",
+      "PAYMENT - THANK YOU"
     ]
   },
   {
     "label": "Food",
     "patterns": [
+      "GALLERIA SUPERMARKET    NORTH YORK",
+      "FARM BOY #33 TORONTO    TORONTO",
+      "UBER EATS               HTTPS://HELP.UB",
+      "LIT ESPRESSO BAR 001    TORONTO",
+      "AUBERGE DU POMMIER      NORTH YORK",
+      "COSTCO BY INSTACART",
+      "TST-Chachees Chai Cafe"
     ]
   },
   {
     "label": "Transportation",
     "patterns": [
+      "ESSO CIRCLE K           TORONTO",
+      "TORONTO PARKING AUTHORI TORONTO",
+      "SHELL C02525            TORONTO",
+      "SECURITY NATIONAL INSU  MONTREAL",
+      "407 ETR      W8L7W5",
+      "AIR-SERV A AN00530"
     ]
   },
   {
     "label": "Travel",
-    "patterns": [
-    ]
+    "patterns": []
   },
   {
     "label": "Internet/Phone",
     "patterns": [
+      "FIDO MOBILE ******0912  888-481-3436",
+      "BELL CANADA      BPY"
     ]
   },
   {
     "label": "Charity",
     "patterns": [
+      "CHALICE(CANADA)         BEDFORD",
+      "UW OFFICE OF ADVANCEME"
     ]
   },
   {
     "label": "Amazon",
-    "patterns": [
-    ]
+    "patterns": []
   },
   {
     "label": "Medical",
     "patterns": [
+      "FELIX HEALTH INC.       TORONTO"
     ]
   },
   {
     "label": "Bank",
     "patterns": [
+      "SCOTIABANK       INV",
+      "EQUITABLE LIFE   INS"
     ]
   },
   {
     "label": "OSAP",
-    "patterns": [
-    ]
+    "patterns": []
   },
   {
     "label": "Learning",
     "patterns": [
+      "MEDIUM MONTHLY          SAN FRANCISCO",
+      "BEATTIES"
     ]
   },
   {
     "label": "Dog",
     "patterns": [
+      "SP WWW.ROVR.CA          TORONTO",
+      "PHI DIRECT              NORTH VANCOUVER"
     ]
   },
   {
     "label": "Etc",
     "patterns": [
+      "STAPLES STORE #3        TORONTO",
+      "THE HOME DEPOT #7073    EAST YORK",
+      "PURE FITNESS 201920206  TORONTO",
+      "GOOGLE *YOUTUBEPREMIUM  G.CO/HELPPAY#",
+      "NETFLIX.COM             866-716-0414",
+      "GOOGLE *CLASH OF CLANS  G.CO/HELPPAY#",
+      "GOOGLE *PLAY BOOKS      G.CO/HELPPAY#",
+      "GOOGLE*PLAY BOOKS GOOGL G.CO HELPPAY#",
+      "PAYPAL           MSP",
+      "MONTHLY ACCOUNT FEE",
+      "ACCT BAL REBATE",
+      "MY STORAGE",
+      "GOOGLE*CLOUD KVX34J"
     ]
   }
 ]

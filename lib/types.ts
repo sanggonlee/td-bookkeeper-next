@@ -19,6 +19,16 @@ export type Transaction = {
   source: 'td' | 'amex' | 'scotia' | 'unknown'
 }
 
+// data/transactions/YYYY-MM.json: finalized transactions for that month (local / Redis archive)
+export type TransactionArchiveEntry = {
+  date: string
+  description: string
+  inflow: number
+  outflow: number
+  source: Transaction['source']
+  category: string
+}
+
 export type CategorizedTransaction = Transaction & {
   status: 'auto' | 'unknown' | 'ambiguous'
   category?: string     // set when status === 'auto'

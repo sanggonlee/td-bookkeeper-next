@@ -1,6 +1,12 @@
 import fs from 'fs/promises'
 import path from 'path'
-import type { PatternsFile, SeenFile, HistoryFile } from './types'
+import type {
+  PatternsFile,
+  SeenFile,
+  HistoryFile,
+  CategorizedTransaction,
+  TransactionArchiveEntry,
+} from './types'
 import { encryptHistory, decryptHistory, encryptSeen, decryptSeen } from './obfuscate'
 
 // ---------------------------------------------------------------------------
@@ -13,6 +19,9 @@ import { encryptHistory, decryptHistory, encryptSeen, decryptSeen } from './obfu
 //   bk:patterns          → PatternsFile (JSON, plaintext)
 //   bk:seen              → SeenFile (JSON, keys obfuscated)
 //   bk:history:YYYY-MM   → HistoryFile (JSON, values obfuscated)
+//   bk:transactions:YYYY-MM → TransactionArchiveEntry[] (plaintext JSON)
+//
+// Local files: data/history/YYYY-MM.json, data/transactions/YYYY-MM.json
 // ---------------------------------------------------------------------------
 
 const useRedis = !!process.env.STORAGE_KV_REST_API_URL
@@ -108,12 +117,50 @@ export async function writeSeen(data: SeenFile): Promise<void> {
 }
 
 export async function readHistory(yearMonth: string): Promise<HistoryFile> {
-  const raw = await readJson<Record<string, string>>(`history:${yearMonth}`, {})
+  let raw: Record<string, string>
+  if (useRedis) {
+    const value = await redisGet<Record<string, string>>(`bk:history:${yearMonth}`)
+    raw = value ?? {}
+  } else {
+    let str = await fileRead(`data/history/${yearMonth}.json`)
+    if (str === null) {
+      str = await fileRead(`data/history:${yearMonth}.json`)
+    }
+    raw = str ? (JSON.parse(str) as Record<string, string>) : {}
+  }
   return decryptHistory(raw)
 }
 
 export async function writeHistory(yearMonth: string, data: HistoryFile): Promise<void> {
-  return writeJson(`history:${yearMonth}`, encryptHistory(data))
+  const payload = encryptHistory(data)
+  if (useRedis) {
+    await redisSet(`bk:history:${yearMonth}`, payload)
+    return
+  }
+  await fileWrite(`data/history/${yearMonth}.json`, JSON.stringify(payload, null, 2))
+}
+
+function toArchiveEntries(transactions: CategorizedTransaction[]): TransactionArchiveEntry[] {
+  return transactions.map(t => ({
+    date: t.date,
+    description: t.description,
+    inflow: t.inflow,
+    outflow: t.outflow,
+    source: t.source,
+    category: t.category ?? 'Uncategorized',
+  }))
+}
+
+export async function writeTransactionArchive(
+  yearMonth: string,
+  transactions: CategorizedTransaction[]
+): Promise<void> {
+  const entries = toArchiveEntries(transactions)
+  if (useRedis) {
+    await redisSet(`bk:transactions:${yearMonth}`, entries)
+    return
+  }
+  await fileWrite(`data/transactions/${yearMonth}.json`, JSON.stringify(entries, null, 2))
 }
 
 export async function readAllHistory(): Promise<Record<string, HistoryFile>> {
@@ -124,18 +171,33 @@ export async function readAllHistory(): Promise<Record<string, HistoryFile>> {
       const keys = await redisKeys('bk:history:*')
       yearMonths = keys.map(k => k.replace('bk:history:', ''))
     } else {
-      const dir = path.join(process.cwd(), 'data', 'history')
-      const files = await fs.readdir(dir)
-      yearMonths = files
-        .filter(f => f.endsWith('.json') && f !== '.gitkeep')
-        .map(f => f.replace('.json', ''))
+      const fromDir = new Set<string>()
+      try {
+        const dir = path.join(process.cwd(), 'data', 'history')
+        const files = await fs.readdir(dir)
+        for (const f of files) {
+          if (f.endsWith('.json') && f !== '.gitkeep') {
+            fromDir.add(f.replace('.json', ''))
+          }
+        }
+      } catch {
+        /* missing dir */
+      }
+      try {
+        const dataDir = path.join(process.cwd(), 'data')
+        const top = await fs.readdir(dataDir)
+        for (const f of top) {
+          const m = f.match(/^history:(\d{4}-\d{2})\.json$/)
+          if (m) fromDir.add(m[1])
+        }
+      } catch {
+        /* missing dir */
+      }
+      yearMonths = [...fromDir]
     }
 
     const entries = await Promise.all(
-      yearMonths.map(async ym => {
-        const raw = await readJson<Record<string, string>>(`history:${ym}`, {})
-        return [ym, decryptHistory(raw)] as [string, HistoryFile]
-      })
+      yearMonths.map(async ym => [ym, await readHistory(ym)] as [string, HistoryFile])
     )
     return Object.fromEntries(entries.sort((a, b) => a[0].localeCompare(b[0])))
   } catch {
