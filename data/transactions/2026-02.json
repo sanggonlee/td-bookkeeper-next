@@ -1,0 +1,170 @@
+[
+  {
+    "date": "2026-02-27",
+    "description": "payroll deposit (Cribl)",
+    "inflow": 3928.06,
+    "outflow": 0,
+    "source": "scotia",
+    "category": "Pay"
+  },
+  {
+    "date": "2026-02-27",
+    "description": "payroll deposit (Cribl)",
+    "inflow": 4412.13,
+    "outflow": 0,
+    "source": "scotia",
+    "category": "Pay"
+  },
+  {
+    "date": "2026-02-26",
+    "description": "deposit (Free Interac E-Transfer)",
+    "inflow": 2727.69,
+    "outflow": 0,
+    "source": "scotia",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-02-26",
+    "description": "bill payment (Pc-Bmo Visa 87129107)",
+    "inflow": 0,
+    "outflow": 4397.46,
+    "source": "scotia",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-02-25",
+    "description": "deposit (Free Interac E-Transfer)",
+    "inflow": 3000,
+    "outflow": 0,
+    "source": "scotia",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-02-24",
+    "description": "payroll deposit (Metrolinx)",
+    "inflow": 3797.18,
+    "outflow": 0,
+    "source": "scotia",
+    "category": "Pay"
+  },
+  {
+    "date": "2026-02-23",
+    "description": "deposit (Free Interac E-Transfer)",
+    "inflow": 1400,
+    "outflow": 0,
+    "source": "scotia",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-02-23",
+    "description": "bill payment (Pc-Bmo Visa 79861156)",
+    "inflow": 0,
+    "outflow": 100,
+    "source": "scotia",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-02-23",
+    "description": "deposit (Free Interac E-Transfer)",
+    "inflow": 1600,
+    "outflow": 0,
+    "source": "scotia",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-02-17",
+    "description": "customer transfer dr. (Investment Purchase)",
+    "inflow": 0,
+    "outflow": 8000,
+    "source": "scotia",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-02-16",
+    "description": "deposit (Free Interac E-Transfer)",
+    "inflow": 3000,
+    "outflow": 0,
+    "source": "scotia",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-02-16",
+    "description": "deposit (Free Interac E-Transfer)",
+    "inflow": 1200,
+    "outflow": 0,
+    "source": "scotia",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-02-14",
+    "description": "deposit (Free Interac E-Transfer)",
+    "inflow": 3000,
+    "outflow": 0,
+    "source": "scotia",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-02-14",
+    "description": "deposit (Free Interac E-Transfer)",
+    "inflow": 1500,
+    "outflow": 0,
+    "source": "scotia",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-02-13",
+    "description": "deposit (Free Interac E-Transfer)",
+    "inflow": 1900,
+    "outflow": 0,
+    "source": "scotia",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-02-13",
+    "description": "deposit (Free Interac E-Transfer)",
+    "inflow": 80,
+    "outflow": 0,
+    "source": "scotia",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-02-13",
+    "description": "deposit (Free Interac E-Transfer)",
+    "inflow": 20,
+    "outflow": 0,
+    "source": "scotia",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-02-12",
+    "description": "deposit (Free Interac E-Transfer)",
+    "inflow": 700,
+    "outflow": 0,
+    "source": "scotia",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-02-12",
+    "description": "bill payment (Pc-Bmo Visa 55939838)",
+    "inflow": 0,
+    "outflow": 100,
+    "source": "scotia",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-02-12",
+    "description": "deposit (Free Interac E-Transfer)",
+    "inflow": 300,
+    "outflow": 0,
+    "source": "scotia",
+    "category": "Transfer"
+  },
+  {
+    "date": "2026-02-10",
+    "description": "deposit (Mb-Dep)",
+    "inflow": 6010,
+    "outflow": 0,
+    "source": "scotia",
+    "category": "Transfer"
+  }
+]

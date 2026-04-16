@@ -1,3 +1,5 @@
+import { findScotiaHeader } from './scotia'
+
 export type BankSource = 'td' | 'amex' | 'scotia' | 'unknown'
 
 const MONTH_ABBREVS = /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\.?$/i
@@ -17,6 +19,8 @@ function isTdDate(str: string): boolean {
 }
 
 export function detectBankSource(rows: string[][]): BankSource {
+  if (findScotiaHeader(rows)) return 'scotia'
+
   // Scan up to 20 rows — Amex XLSX files have several account-info / header
   // rows before the first transaction row.
   for (const row of rows.slice(0, 20)) {
@@ -25,7 +29,6 @@ export function detectBankSource(rows: string[][]): BankSource {
 
     if (row.length >= 3 && isAmexDate(firstCell)) return 'amex'
     if (row.length >= 4 && isTdDate(firstCell)) return 'td'
-    // Scotia stub: no detection yet
   }
   return 'unknown'
 }

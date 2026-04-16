@@ -2,7 +2,9 @@
   {
     "label": "Pay",
     "patterns": [
-      "CRIBL            PAY"
+      "CRIBL            PAY",
+      "payroll deposit (Cribl)",
+      "payroll deposit (Metrolinx)"
     ]
   },
   {
@@ -55,7 +57,13 @@
       "JX570 TFR-TO C/C",
       "E-TRANSFER ***acQ",
       "GC 1988-DEPOSIT",
-      "PAYMENT - THANK YOU"
+      "PAYMENT - THANK YOU",
+      "deposit (Free Interac E-Transfer)",
+      "bill payment (Pc-Bmo Visa 87129107)",
+      "bill payment (Pc-Bmo Visa 79861156)",
+      "customer transfer dr. (Investment Purchase)",
+      "bill payment (Pc-Bmo Visa 55939838)",
+      "deposit (Mb-Dep)"
     ]
   },
   {
