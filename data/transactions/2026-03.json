@@ -1,0 +1,909 @@
+{
+  "format": "enc-v1",
+  "items": [
+    {
+      "date": "2026-03-02",
+      "description": "AgoAFhEHCmMGBAx2ZXJ5f3MRAgo",
+      "inflow": 0,
+      "outflow": 577,
+      "source": "td",
+      "category": "Car/Transportation"
+    },
+    {
+      "date": "2026-03-02",
+      "description": "AhYRGn9ic3VmZXR2ZXJ5f3MIEAI",
+      "inflow": 0,
+      "outflow": 497.37,
+      "source": "td",
+      "category": "Home"
+    },
+    {
+      "date": "2026-03-03",
+      "description": "GAQEGBF_ZQocBnp2ZXJ5f3MIEAI",
+      "inflow": 308.34,
+      "outflow": 0,
+      "source": "td",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-04",
+      "description": "BQAcHX8WaBcUF3R8b3hrHGE",
+      "inflow": 0,
+      "outflow": 150,
+      "source": "td",
+      "category": "Car/Transportation"
+    },
+    {
+      "date": "2026-03-05",
+      "description": "ZHNiam9nFndidWBgdWIOFgEA",
+      "inflow": 1542.65,
+      "outflow": 0,
+      "source": "td",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-05",
+      "description": "BQAcHX8WaBcUF3R8b3gUGhg",
+      "inflow": 0,
+      "outflow": 1542.65,
+      "source": "td",
+      "category": "Home"
+    },
+    {
+      "date": "2026-03-10",
+      "description": "GAQEGBF_ZQocBnp2ZXJ5f3MIEAI",
+      "inflow": 69.94,
+      "outflow": 0,
+      "source": "td",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-10",
+      "description": "FAAeFX8QBA0TARV2ZXJ5f3MHEws",
+      "inflow": 0,
+      "outflow": 68.93,
+      "source": "td",
+      "category": "Telecom/Subscriptions"
+    },
+    {
+      "date": "2026-03-13",
+      "description": "FRcbGxNzZWNyZXR2ZXJ5f3MVAgs",
+      "inflow": 490.24,
+      "outflow": 0,
+      "source": "td",
+      "category": "Pay"
+    },
+    {
+      "date": "2026-03-16",
+      "description": "EyswKzY3IiZyAjUlZXJ5f3MHEws",
+      "inflow": 0,
+      "outflow": 104.74,
+      "source": "td",
+      "category": "Home"
+    },
+    {
+      "date": "2026-03-17",
+      "description": "GAQEGBF_ZQocBnp2ZXJ5f3MIEAI",
+      "inflow": 121.75,
+      "outflow": 0,
+      "source": "td",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-17",
+      "description": "ZHNiam5kFnZgcm1jdWIOFgEA",
+      "inflow": 1517.16,
+      "outflow": 0,
+      "source": "td",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-18",
+      "description": "FQQAFB5zZWNyZXR2ZXJ5f3MHEws",
+      "inflow": 0,
+      "outflow": 209.98,
+      "source": "td",
+      "category": "Home"
+    },
+    {
+      "date": "2026-03-25",
+      "description": "Hg1iaG9zEQUAaAAZZRF2HA",
+      "inflow": 0,
+      "outflow": 57.1,
+      "source": "td",
+      "category": "Home"
+    },
+    {
+      "date": "2026-03-25",
+      "description": "AgoAeQoHDA8bEQ12ZRlvFWoOdg",
+      "inflow": 0,
+      "outflow": 56.53,
+      "source": "td",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-25",
+      "description": "ExQHEAsSBw8XZRgfAxd5f3MMDQE",
+      "inflow": 0,
+      "outflow": 120,
+      "source": "td",
+      "category": "Bank"
+    },
+    {
+      "date": "2026-03-25",
+      "description": "FwgXAX8RDA8eZQQPCAZ5f3MIEAI",
+      "inflow": 0,
+      "outflow": 976.42,
+      "source": "td",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-31",
+      "description": "FRcbGxNzZWNyZXR2ZXJ5f3MVAgs",
+      "inflow": 490.24,
+      "outflow": 0,
+      "source": "td",
+      "category": "Pay"
+    },
+    {
+      "date": "2026-03-31",
+      "description": "GAQEGBF_ZQocBnp2ZXJ5f3MIEAI",
+      "inflow": 33.52,
+      "outflow": 0,
+      "source": "td",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-31",
+      "description": "GwocDRcfHGMTBhcZEBwNfxUABg",
+      "inflow": 0,
+      "outflow": 30.95,
+      "source": "td",
+      "category": "Etc"
+    },
+    {
+      "date": "2026-03-31",
+      "description": "FwYRDX8RBA9yFxEUBAYc",
+      "inflow": 30.95,
+      "outflow": 0,
+      "source": "td",
+      "category": "Etc"
+    },
+    {
+      "date": "2026-03-31",
+      "description": "Ii03eS82NzA9KzU6ZTs3LCY3IjwmMXZtHjwpOjZjAyZ9",
+      "inflow": 0,
+      "outflow": 378,
+      "source": "scotia",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-30",
+      "description": "JiQ8PDI8N2N6ETskKjwtMHMKLXs",
+      "inflow": 0,
+      "outflow": 3.38,
+      "source": "scotia",
+      "category": "Car/Transportation"
+    },
+    {
+      "date": "2026-03-30",
+      "description": "PygiODwnZSg7MTc-IDx5LiYgJjw2dCcwM3l3ByoxPSsgOWUdN3Y",
+      "inflow": 0,
+      "outflow": 25.97,
+      "source": "scotia",
+      "category": "Home"
+    },
+    {
+      "date": "2026-03-30",
+      "description": "MDc3KjdzKi1yIDM6LDwtMD1lawYqJjkrJjZ_HCtq",
+      "inflow": 0,
+      "outflow": 43.2,
+      "source": "scotia",
+      "category": "Tax"
+    },
+    {
+      "date": "2026-03-29",
+      "description": "NS0zLTY-IGMxLTVkcnJxETw3NzplDTk3OXkQPWw",
+      "inflow": 0,
+      "outflow": 10.06,
+      "source": "scotia",
+      "category": "Tax"
+    },
+    {
+      "date": "2026-03-29",
+      "description": "JCYhKn9idXRlZXwCKiA2MScqYx0rfQ",
+      "inflow": 0,
+      "outflow": 56.08,
+      "source": "scotia",
+      "category": "Home"
+    },
+    {
+      "date": "2026-03-28",
+      "description": "OiwmeTogNTE3Nic5ZTA4LXNtFz03OzgxPXkQPWw",
+      "inflow": 0,
+      "outflow": 9.3,
+      "source": "scotia",
+      "category": "Home"
+    },
+    {
+      "date": "2026-03-27",
+      "description": "MCwkPH80MDohZWVufGp5dwcqMT0rIDllHTd2",
+      "inflow": 0,
+      "outflow": 33.52,
+      "source": "scotia",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-25",
+      "description": "OSk-IH81NyYhJjslZXoNMCEqLSYqdBkrew",
+      "inflow": 0,
+      "outflow": 2,
+      "source": "scotia",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-25",
+      "description": "Jjc3Kis8ZSY1KT04MT03fyAxLXJtADk3PTcrPGUMPGw",
+      "inflow": 0,
+      "outflow": 50,
+      "source": "scotia",
+      "category": "Travel"
+    },
+    {
+      "date": "2026-03-22",
+      "description": "IiQgPjonZTMzNz92bQY2LTwrNz1lGzhs",
+      "inflow": 0,
+      "outflow": 8,
+      "source": "scotia",
+      "category": "Telecom/Subscriptions"
+    },
+    {
+      "date": "2026-03-22",
+      "description": "JTRyczQ6MSA6IDp2LSc7fz8sITc3IC9lOXl3ByoxPSsgOWUdN3Y",
+      "inflow": 0,
+      "outflow": 19.14,
+      "source": "scotia",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-22",
+      "description": "MCQgNH8xKjpyZmdlZXoNMCEqLSYqdBkrew",
+      "inflow": 0,
+      "outflow": 33.07,
+      "source": "scotia",
+      "category": "Medical"
+    },
+    {
+      "date": "2026-03-22",
+      "description": "JTRyczQ6MSA6IDp2LSc7fz8sITc3IC9lOXl3ByoxPSsgOWUdN3Y",
+      "inflow": 0,
+      "outflow": 28.49,
+      "source": "scotia",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-22",
+      "description": "JiAmKjIyNzdyZmdkdWZ5dwcqMT0rIDllHTd2",
+      "inflow": 0,
+      "outflow": 91.53,
+      "source": "scotia",
+      "category": "Car/Transportation"
+    },
+    {
+      "date": "2026-03-22",
+      "description": "LzByKjoyIyw9IXQvKiAyOzIpJnJtADk3PTcrPGUMPGw",
+      "inflow": 0,
+      "outflow": 320.46,
+      "source": "scotia",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-21",
+      "description": "OzwnNzg3Ki01ZTMvKig4fzgkLzUwP3ZtBDgqNC0iPGUbOGw",
+      "inflow": 0,
+      "outflow": 37.66,
+      "source": "scotia",
+      "category": "Etc"
+    },
+    {
+      "date": "2026-03-21",
+      "description": "MzYhNn8wLDExKTF2LnJxETw3NzplDTk3OXkQPWw",
+      "inflow": 0,
+      "outflow": 56.02,
+      "source": "scotia",
+      "category": "Etc"
+    },
+    {
+      "date": "2026-03-21",
+      "description": "NygoN38-LjciZTc3ZXphaWVocWNzeWd1ZWt_HCtq",
+      "inflow": 11.29,
+      "outflow": 0,
+      "source": "scotia",
+      "category": "Etc"
+    },
+    {
+      "date": "2026-03-19",
+      "description": "Iiw_eTc8Nzc9Kyd2ZmNgZmplax8sJyUsISo-JiIicgo6fw",
+      "inflow": 0,
+      "outflow": 12.74,
+      "source": "scotia",
+      "category": "Dog"
+    },
+    {
+      "date": "2026-03-19",
+      "description": "Iyc3K38wJC0zITV5MDA8LSc3KiJlfAIqIDYxJypjHSt9",
+      "inflow": 0,
+      "outflow": 42.05,
+      "source": "scotia",
+      "category": "Home"
+    },
+    {
+      "date": "2026-03-19",
+      "description": "MCQgNH8xKjpyZmdlZXoNMCEqLSYqdBkrew",
+      "inflow": 0,
+      "outflow": 37.95,
+      "source": "scotia",
+      "category": "Medical"
+    },
+    {
+      "date": "2026-03-19",
+      "description": "MCQgNH8xKjpyZmdlZXoNMCEqLSYqdBkrew",
+      "inflow": 3.5,
+      "outflow": 0,
+      "source": "scotia",
+      "category": "Medical"
+    },
+    {
+      "date": "2026-03-19",
+      "description": "JiQrNDo9MWM0Nzs7ZX95dXlvaXh1Z3x1Z3l3a3Fq",
+      "inflow": 1138.91,
+      "outflow": 0,
+      "source": "scotia",
+      "category": "Car/Transportation"
+    },
+    {
+      "date": "2026-03-17",
+      "description": "Mio_MDE8NmMiLC4sJHJob2BwcHJtADk3PTcrPGUMPGw",
+      "inflow": 0,
+      "outflow": 28.24,
+      "source": "scotia",
+      "category": "Charity"
+    },
+    {
+      "date": "2026-03-15",
+      "description": "MSQ-NTohLCJyNiEmICA0PiEuJiZlfBgqIC03cxwsIC50GSt7",
+      "inflow": 0,
+      "outflow": 2.09,
+      "source": "scotia",
+      "category": "Car/Transportation"
+    },
+    {
+      "date": "2026-03-15",
+      "description": "MSQ-NTohLCJyNiEmICA0PiEuJiZlfBgqIC03cxwsIC50GSt7",
+      "inflow": 0,
+      "outflow": 4.98,
+      "source": "scotia",
+      "category": "Car/Transportation"
+    },
+    {
+      "date": "2026-03-15",
+      "description": "MSQ-NTohLCJyNiEmICA0PiEuJiZlfBgqIC03cxwsIC50GSt7",
+      "inflow": 0,
+      "outflow": 22,
+      "source": "scotia",
+      "category": "Car/Transportation"
+    },
+    {
+      "date": "2026-03-15",
+      "description": "MSQ-NTohLCJyNiEmICA0PiEuJiZlfBgqIC03cxwsIC50GSt7",
+      "inflow": 0,
+      "outflow": 16.95,
+      "source": "scotia",
+      "category": "Car/Transportation"
+    },
+    {
+      "date": "2026-03-15",
+      "description": "MSQ-NTohLCJyNiEmICA0PiEuJiZlfBgqIC03cxwsIC50GSt7",
+      "inflow": 0,
+      "outflow": 32.46,
+      "source": "scotia",
+      "category": "Car/Transportation"
+    },
+    {
+      "date": "2026-03-15",
+      "description": "NyE2MCs6Ki0zKXQ1JCA9fzUgJg",
+      "inflow": 0,
+      "outflow": 50,
+      "source": "scotia",
+      "category": "Home"
+    },
+    {
+      "date": "2026-03-15",
+      "description": "Nys8LD4_ZSU3IHQkICQ8LSAkLw",
+      "inflow": 50,
+      "outflow": 0,
+      "source": "scotia",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-14",
+      "description": "JS09KS82NzByISYjInI0PiExY3FzZHZtFzgsJ2UaPTc_dgo8cA",
+      "inflow": 0,
+      "outflow": 2.79,
+      "source": "scotia",
+      "category": "Pay"
+    },
+    {
+      "date": "2026-03-14",
+      "description": "Iiw_eTc8Nzc9Kyd2ZmNgZmplax8sJyUsISo-JiIicgo6fw",
+      "inflow": 0,
+      "outflow": 1.77,
+      "source": "scotia",
+      "category": "Dog"
+    },
+    {
+      "date": "2026-03-14",
+      "description": "Iiw_eTc8Nzc9Kyd2ZmNgZmplax8sJyUsISo-JiIicgo6fw",
+      "inflow": 0,
+      "outflow": 1.56,
+      "source": "scotia",
+      "category": "Dog"
+    },
+    {
+      "date": "2026-03-14",
+      "description": "JS09KS82NzByISYjInI0PiExY3FzZHZtFzgsJ2UaPTc_dgo8cA",
+      "inflow": 0,
+      "outflow": 1.53,
+      "source": "scotia",
+      "category": "Pay"
+    },
+    {
+      "date": "2026-03-14",
+      "description": "Ijc7NTM6MC5yLTE3KSYxf35lLjs2Jz82IXl3HiwwISwnJSQnPj5zCi17",
+      "inflow": 0,
+      "outflow": 20.5,
+      "source": "scotia",
+      "category": "Medical"
+    },
+    {
+      "date": "2026-03-14",
+      "description": "Oio8PjB0NmNxZWZgZXoNMCEqLSYqdBkrew",
+      "inflow": 0,
+      "outflow": 79.07,
+      "source": "scotia",
+      "category": "Car/Transportation"
+    },
+    {
+      "date": "2026-03-14",
+      "description": "IjYmdCw2JCs9NyczZSA8LCckNiAkOnZtBjYtPCs3PWUbOGw",
+      "inflow": 0,
+      "outflow": 122.67,
+      "source": "scotia",
+      "category": "Car/Transportation"
+    },
+    {
+      "date": "2026-03-13",
+      "description": "JTA8NyYxNyw9LnQwKic3OzIxKj0rdCYkIHl3ByoxPSsgOWUdN3Y",
+      "inflow": 0,
+      "outflow": 11.8,
+      "source": "scotia",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-13",
+      "description": "NygoN38-LjciZTc3bzApbyY_cTdzZHZtam9pfndyZGhlZnJgeRA9bA",
+      "inflow": 0,
+      "outflow": 43.65,
+      "source": "scotia",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-10",
+      "description": "OyoheTI8NmMxKjIwIDd5dwcqMT0rIDllHTd2",
+      "inflow": 0,
+      "outflow": 3.73,
+      "source": "scotia",
+      "category": "Home"
+    },
+    {
+      "date": "2026-03-10",
+      "description": "OCczeTw8MDEmNj0yIHIrOiAxIic3NXZtBjYtPCs3PWUbOGw",
+      "inflow": 0,
+      "outflow": 26.67,
+      "source": "scotia",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-10",
+      "description": "MCw2Nn8-KiE7KTF2b3hzdXlvdWBxYnZtamFnfnJ1ZmhnYXJjeRA9bA",
+      "inflow": 0,
+      "outflow": 62.16,
+      "source": "scotia",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-08",
+      "description": "OSo_NjI8ZS09NyA-ZSs2LThlMCYqJnZtHDYtJy1jCyomPWUdN3Y",
+      "inflow": 0,
+      "outflow": 9.04,
+      "source": "scotia",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-08",
+      "description": "NygoN38-LjciZTc3bzApaSIuems8ZnZtam9pfndyZGhlZnJgeRA9bA",
+      "inflow": 0,
+      "outflow": 34.42,
+      "source": "scotia",
+      "category": "Car/Transportation"
+    },
+    {
+      "date": "2026-03-08",
+      "description": "MCQgNH8xKjpyZmdlZXoNMCEqLSYqdBkrew",
+      "inflow": 0,
+      "outflow": 40.57,
+      "source": "scotia",
+      "category": "Medical"
+    },
+    {
+      "date": "2026-03-08",
+      "description": "NygoN38-LjciZTc3bzApaD13djErZXZtam9pfndyZGhlZnJgeRA9bA",
+      "inflow": 0,
+      "outflow": 50.84,
+      "source": "scotia",
+      "category": "Home"
+    },
+    {
+      "date": "2026-03-07",
+      "description": "NSowKn8xNyYzIXR-ET0rMD0xLHIKOn8",
+      "inflow": 0,
+      "outflow": 3.35,
+      "source": "scotia",
+      "category": "Travel"
+    },
+    {
+      "date": "2026-03-07",
+      "description": "JTEzKz0mJighZWxmdWVhbWR3e2BlfG51YnRoa3duZXdsZGUdN3Y",
+      "inflow": 0,
+      "outflow": 10,
+      "source": "scotia",
+      "category": "Travel"
+    },
+    {
+      "date": "2026-03-07",
+      "description": "PigzKytzaGMhLTEmNTMrO3NtDT03ID5lCzYtOGUMPGw",
+      "inflow": 0,
+      "outflow": 16.85,
+      "source": "scotia",
+      "category": "Tax"
+    },
+    {
+      "date": "2026-03-07",
+      "description": "Mio-NT4hJC4zZXd2cmttf3sRLCAqOiIqchYxeg",
+      "inflow": 0,
+      "outflow": 10.45,
+      "source": "scotia",
+      "category": "Pay"
+    },
+    {
+      "date": "2026-03-07",
+      "description": "PSQ4MDQ2K2M8KiYiLXIgMCEuY3oLOyQxOnkGPDcocgo6fw",
+      "inflow": 0,
+      "outflow": 42.85,
+      "source": "scotia",
+      "category": "Tax"
+    },
+    {
+      "date": "2026-03-07",
+      "description": "JS09KS82NzByISYjInI0PiExY3F8bHZtBjYtPCs3PWUbOGw",
+      "inflow": 0,
+      "outflow": 36.94,
+      "source": "scotia",
+      "category": "Medical"
+    },
+    {
+      "date": "2026-03-07",
+      "description": "Oio9Mn8gKmM1KjsyZT0pKzomIj5lfAIqIDYxJypjHSt9",
+      "inflow": 0,
+      "outflow": 380,
+      "source": "scotia",
+      "category": "Charity"
+    },
+    {
+      "date": "2026-03-06",
+      "description": "PDwnPjAqJGM4JCQ3KzcqOnM3JiExNSM3M3l3ByoxPSsgOWUdN3Y",
+      "inflow": 0,
+      "outflow": 59.74,
+      "source": "scotia",
+      "category": "Car/Transportation"
+    },
+    {
+      "date": "2026-03-05",
+      "description": "JTVyLigkazE9MyZ4JjN5dwcqMT0rIDllHTd2",
+      "inflow": 0,
+      "outflow": 109.6,
+      "source": "scotia",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-04",
+      "description": "JT83OjcmJC1yICwmNzcqLHNtFz03OzgxPXkQPWw",
+      "inflow": 0,
+      "outflow": 5.93,
+      "source": "scotia",
+      "category": "Telecom/Subscriptions"
+    },
+    {
+      "date": "2026-03-28",
+      "description": "BQARDA0aERpyCxUCDB0XHh9lChwWAXZlHxYRBxcGEwk",
+      "inflow": 0,
+      "outflow": 266.25,
+      "source": "amex",
+      "category": "Car/Transportation"
+    },
+    {
+      "date": "2026-03-25",
+      "description": "GwAWEAoeZQ4dCwAeCQt5f3NlY3JldHZlARgRcwMREwsXHxYRFg",
+      "inflow": 0,
+      "outflow": 7.05,
+      "source": "amex",
+      "category": "Etc"
+    },
+    {
+      "date": "2026-03-25",
+      "description": "BgQLFBodEWMAABcTDAQcG3NoYwYNFRgOcgAQBg",
+      "inflow": 976.42,
+      "outflow": 0,
+      "source": "amex",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-20",
+      "description": "BQARDA0aERpyCxUCDB0XHh9lChwWAXZlHxYRBxcGEwk",
+      "inflow": 0,
+      "outflow": 93.24,
+      "source": "amex",
+      "category": "Car/Transportation"
+    },
+    {
+      "date": "2026-03-20",
+      "description": "GwAfGxoBFgsbFXQQABd5Fh0WFxMJGBsAHA0",
+      "inflow": 0,
+      "outflow": 12.99,
+      "source": "amex",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-20",
+      "description": "AwcXC38WBBcBZXR2ZXJ5f3NlY3JldHZlBhYNHAsXHQ",
+      "inflow": 0,
+      "outflow": 29.53,
+      "source": "amex",
+      "category": "Home"
+    },
+    {
+      "date": "2026-03-20",
+      "description": "AwcXC38bCg8WDBoRFnIaHh0EBxNlHRhlBhYNHAsXHQ",
+      "inflow": 0,
+      "outflow": 4.42,
+      "source": "amex",
+      "category": "Home"
+    },
+    {
+      "date": "2026-03-19",
+      "description": "EAwWFn8eCgEbCRF2b3hzdXlvc2t0ZnZlamFnfnF7Y2hnYnZk",
+      "inflow": 0,
+      "outflow": 89.27,
+      "source": "amex",
+      "category": "Telecom/Subscriptions"
+    },
+    {
+      "date": "2026-03-14",
+      "description": "BhAAHH8VDBccAAcFZWBpbmp3c2B1YnZlBhYNHAsXHQ",
+      "inflow": 0,
+      "outflow": 89.27,
+      "source": "amex",
+      "category": "Etc"
+    },
+    {
+      "date": "2026-03-12",
+      "description": "EQodHhMWZWkLCgECEBAcDwEADhsQGXZlFXccHGoLFwkEBgQLeg",
+      "inflow": 0,
+      "outflow": 14.68,
+      "source": "amex",
+      "category": "Etc"
+    },
+    {
+      "date": "2026-03-12",
+      "description": "AwcXC38WBBcBZXR2ZXJ5f3NlY3JldHZlBhYNHAsXHQ",
+      "inflow": 0,
+      "outflow": 4.23,
+      "source": "amex",
+      "category": "Home"
+    },
+    {
+      "date": "2026-03-12",
+      "description": "AwcXC38WBBcBZXR2ZXJ5f3NlY3JldHZlBhYNHAsXHQ",
+      "inflow": 0,
+      "outflow": 28.25,
+      "source": "amex",
+      "category": "Home"
+    },
+    {
+      "date": "2026-03-10",
+      "description": "GAAGHxMaHW0RChl2ZXJ5f3NlY3JldHZlam1rfnBzZ2hmb3xh",
+      "inflow": 0,
+      "outflow": 9.03,
+      "source": "amex",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-07",
+      "description": "FQ0TFRYQAGsRBBoXARNwf3NlY3JldHZlEBwbFQoRFg",
+      "inflow": 0,
+      "outflow": 42,
+      "source": "amex",
+      "category": "Charity"
+    },
+    {
+      "date": "2026-03-04",
+      "description": "AwcXC38WBBcBZXR2ZXJ5f3NlY3JldHZlGg0LAxZ5fWocEwkCdwoR",
+      "inflow": 0,
+      "outflow": 35.65,
+      "source": "amex",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-01",
+      "description": "FQQcGBsSZRMXEXQeABMVCxtlChwWAQRlHBYNBw1jBAQaFQoHDxoB",
+      "inflow": 0,
+      "outflow": 101.4,
+      "source": "amex",
+      "category": "Bank"
+    },
+    {
+      "date": "2026-03-31",
+      "description": "JiQrKzA_KWM2ICQ5Njstf3sGMTsnOH8",
+      "inflow": 4412.13,
+      "outflow": 0,
+      "source": "scotia",
+      "category": "Pay"
+    },
+    {
+      "date": "2026-03-27",
+      "description": "ISwmMTshJDQzKXR-AyA8OnMMLSYgJjcmchxyBzciPDYyMzd7",
+      "inflow": 0,
+      "outflow": 90,
+      "source": "scotia",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-26",
+      "description": "MiAwMCtzKCY_KnR-ASA4OSdlEyc3Nz4kITx2",
+      "inflow": 0,
+      "outflow": 2282.49,
+      "source": "scotia",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-26",
+      "description": "ISwmMTshJDQzKXR-AyA8OnMMLSYgJjcmchxyBzciPDYyMzd7",
+      "inflow": 0,
+      "outflow": 90,
+      "source": "scotia",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-25",
+      "description": "MiAiNiw6MWN6AyYzIHIQMScgMTMmdBNoBis-PTYlNzd9",
+      "inflow": 1002.56,
+      "outflow": 0,
+      "source": "scotia",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-24",
+      "description": "MiAiNiw6MWN6AyYzIHIQMScgMTMmdBNoBis-PTYlNzd9",
+      "inflow": 2300,
+      "outflow": 0,
+      "source": "scotia",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-24",
+      "description": "JiQrKzA_KWM2ICQ5Njstf3sIJiY3OzosPCF2",
+      "inflow": 3398.43,
+      "outflow": 0,
+      "source": "scotia",
+      "category": "Pay"
+    },
+    {
+      "date": "2026-03-23",
+      "description": "MiAiNiw6MWN6AyYzIHIQMScgMTMmdBNoBis-PTYlNzd9",
+      "inflow": 2000,
+      "outflow": 0,
+      "source": "scotia",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-20",
+      "description": "NCw-NX8jJDo_IDoiZXoJPH4HLj1lAj82M3lrYH10ZHdlbmw",
+      "inflow": 0,
+      "outflow": 471.85,
+      "source": "scotia",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-19",
+      "description": "NTAhLTA-IDFyMSY3KyE_OiFlJyBrdH4VMXkLPGV3Z3ZjbnVia29kcXJhc2FgbA",
+      "inflow": 0,
+      "outflow": 1138.91,
+      "source": "scotia",
+      "category": "Car/Transportation"
+    },
+    {
+      "date": "2026-03-18",
+      "description": "ISwmMTshJDQzKXR-AyA8OnMMLSYgJjcmchxyBzciPDYyMzd7",
+      "inflow": 0,
+      "outflow": 150,
+      "source": "scotia",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-13",
+      "description": "JiQrKzA_KWM2ICQ5Njstf3sGMTsnOH8",
+      "inflow": 4412.13,
+      "outflow": 0,
+      "source": "scotia",
+      "category": "Pay"
+    },
+    {
+      "date": "2026-03-12",
+      "description": "ISwmMTshJDQzKXR-AyA8OnMMLSYgJjcmchxyBzciPDYyMzd7",
+      "inflow": 0,
+      "outflow": 90,
+      "source": "scotia",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-10",
+      "description": "JiQrKzA_KWM2ICQ5Njstf3sIJiY3OzosPCF2",
+      "inflow": 3398.43,
+      "outflow": 0,
+      "source": "scotia",
+      "category": "Pay"
+    },
+    {
+      "date": "2026-03-05",
+      "description": "OyogLTgyIiZyNTUvKDc3K3NtYGd1Ym93Ymx2",
+      "inflow": 0,
+      "outflow": 1479.29,
+      "source": "scotia",
+      "category": "Food"
+    },
+    {
+      "date": "2026-03-05",
+      "description": "OyogLTgyIiZyNTUvKDc3K3NtYGd1Ym93Ym12",
+      "inflow": 0,
+      "outflow": 1922.23,
+      "source": "scotia",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-05",
+      "description": "NTAhLTA-IDFyMSY3KyE_OiFlJyBrdH4MPC86IDEuNysgdhUnKzw7JDA3bA",
+      "inflow": 0,
+      "outflow": 1600,
+      "source": "scotia",
+      "category": "Transfer"
+    },
+    {
+      "date": "2026-03-02",
+      "description": "ISwmMTshJDQzKXR-AyA8OnMMLSYgJjcmchxyBzciPDYyMzd7",
+      "inflow": 0,
+      "outflow": 379,
+      "source": "scotia",
+      "category": "Food"
+    }
+  ]
+}

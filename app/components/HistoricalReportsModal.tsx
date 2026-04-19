@@ -216,7 +216,7 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
         {!loading && hasData && (
           <>
             <ChartSection>
-              <ChartTitle>Month-over-month spending</ChartTitle>
+              <ChartTitle>Spending by category (last 12 months)</ChartTitle>
               <Chart history={history} />
             </ChartSection>
 

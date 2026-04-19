@@ -7,7 +7,15 @@ import type {
   CategorizedTransaction,
   TransactionArchiveEntry,
 } from './types'
-import { encryptHistory, decryptHistory, encryptSeen, decryptSeen } from './obfuscate'
+import {
+  encryptHistory,
+  decryptHistory,
+  encryptSeen,
+  decryptSeen,
+  encryptPatternsWire,
+  decryptPatternsWire,
+  encryptTransactionArchiveWire,
+} from './obfuscate'
 
 // ---------------------------------------------------------------------------
 // Storage provider
@@ -16,12 +24,13 @@ import { encryptHistory, decryptHistory, encryptSeen, decryptSeen } from './obfu
 // Development (no env var): local JSON files in data/.
 //
 // Redis key namespace: "bk:" prefix for all keys.
-//   bk:patterns          → PatternsFile (JSON, plaintext)
+//   bk:patterns          → PatternsWireV1 (pattern substrings obfuscated)
 //   bk:seen              → SeenFile (JSON, keys obfuscated)
 //   bk:history:YYYY-MM   → HistoryFile (JSON, values obfuscated)
-//   bk:transactions:YYYY-MM → TransactionArchiveEntry[] (plaintext JSON)
+//   bk:transactions:YYYY-MM → TransactionsArchiveWireV1 (descriptions obfuscated)
 //
-// Local files: data/history/YYYY-MM.json, data/transactions/YYYY-MM.json
+// Local files: data/patterns.json (PatternsWireV1), data/history/YYYY-MM.json,
+//   data/transactions/YYYY-MM.json, data/seen.json
 // ---------------------------------------------------------------------------
 
 const useRedis = !!process.env.STORAGE_KV_REST_API_URL
@@ -71,13 +80,7 @@ async function fileWrite(relativePath: string, content: string): Promise<void> {
 async function readJson<T>(key: string, fallback: T): Promise<T> {
   if (useRedis) {
     const value = await redisGet<T>(`bk:${key}`)
-    // Redis returns parsed JSON automatically; fall back to filesystem seed
-    // for patterns (committed to git) when Redis has no value yet.
     if (value !== null) return value
-    if (key === 'patterns') {
-      const raw = await fileRead('data/patterns.json')
-      return raw ? (JSON.parse(raw) as T) : fallback
-    }
     return fallback
   }
   const raw = await fileRead(`data/${key}.json`)
@@ -100,11 +103,23 @@ async function writeJson(key: string, value: unknown): Promise<void> {
 // -- Public API --------------------------------------------------------------
 
 export async function readPatterns(): Promise<PatternsFile> {
-  return readJson<PatternsFile>('patterns', [])
+  if (useRedis) {
+    const value = await redisGet<unknown>('bk:patterns')
+    if (value !== null) return decryptPatternsWire(value)
+    const raw = await fileRead('data/patterns.json')
+    return raw ? decryptPatternsWire(JSON.parse(raw)) : []
+  }
+  const raw = await fileRead('data/patterns.json')
+  return raw ? decryptPatternsWire(JSON.parse(raw)) : []
 }
 
 export async function writePatterns(data: PatternsFile): Promise<void> {
-  return writeJson('patterns', data)
+  const wire = encryptPatternsWire(data)
+  if (useRedis) {
+    await redisSet('bk:patterns', wire)
+    return
+  }
+  await fileWrite('data/patterns.json', JSON.stringify(wire, null, 2))
 }
 
 export async function readSeen(): Promise<SeenFile> {
@@ -156,11 +171,12 @@ export async function writeTransactionArchive(
   transactions: CategorizedTransaction[]
 ): Promise<void> {
   const entries = toArchiveEntries(transactions)
+  const wire = encryptTransactionArchiveWire(entries)
   if (useRedis) {
-    await redisSet(`bk:transactions:${yearMonth}`, entries)
+    await redisSet(`bk:transactions:${yearMonth}`, wire)
     return
   }
-  await fileWrite(`data/transactions/${yearMonth}.json`, JSON.stringify(entries, null, 2))
+  await fileWrite(`data/transactions/${yearMonth}.json`, JSON.stringify(wire, null, 2))
 }
 
 export async function readAllHistory(): Promise<Record<string, HistoryFile>> {

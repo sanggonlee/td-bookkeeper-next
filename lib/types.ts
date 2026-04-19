@@ -5,6 +5,12 @@ export type PatternEntry = {
 
 export type PatternsFile = PatternEntry[]
 
+/** On-disk / Redis shape: category labels plaintext; pattern substrings obfuscated. */
+export type PatternsWireV1 = {
+  format: 'enc-v1'
+  items: { label: string; patterns: string[] }[]
+}
+
 // data/seen.json: exact description -> category label
 export type SeenFile = Record<string, string>
 
@@ -19,7 +25,7 @@ export type Transaction = {
   source: 'td' | 'amex' | 'scotia' | 'unknown'
 }
 
-// data/transactions/YYYY-MM.json: finalized transactions for that month (local / Redis archive)
+// In-memory / decrypted archive row
 export type TransactionArchiveEntry = {
   date: string
   description: string
@@ -27,6 +33,12 @@ export type TransactionArchiveEntry = {
   outflow: number
   source: Transaction['source']
   category: string
+}
+
+/** On disk / Redis: `items[].description` is encryptString ciphertext. */
+export type TransactionsArchiveWireV1 = {
+  format: 'enc-v1'
+  items: TransactionArchiveEntry[]
 }
 
 export type CategorizedTransaction = Transaction & {

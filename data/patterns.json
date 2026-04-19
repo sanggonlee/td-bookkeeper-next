@@ -1,163 +1,210 @@
-[
-  {
-    "label": "Pay",
-    "patterns": [
-      "CRIBL            PAY",
-      "payroll deposit (Cribl)",
-      "payroll deposit (Metrolinx)"
-    ]
-  },
-  {
-    "label": "Tax",
-    "patterns": []
-  },
-  {
-    "label": "Mort/Maint",
-    "patterns": [
-      "TSCC 1664        MSP",
-      "BNS MTGE DEPT    MTG",
-      "Enbridge Gas     BPY",
-      "CARMA            BPY",
-      "TOR UTILITY  Y9U4L5"
-    ]
-  },
-  {
-    "label": "Cash Withdrawl",
-    "patterns": []
-  },
-  {
-    "label": "E-Transfer",
-    "patterns": [
-      "SEND E-TFR ***vGH",
-      "SEND E-TFR ***Xbe",
-      "SEND E-TFR ***3rz",
-      "E-TRANSFER ***SES",
-      "SEND E-TFR ***Fzv",
-      "SEND E-TFR ***dv8",
-      "SEND E-TFR ***tDu",
-      "SEND E-TFR ***NJy",
-      "SEND E-TFR ***FDa",
-      "SEND E-TFR ***kPQ",
-      "SEND E-TFR ***QbM",
-      "SEND E-TFR ***tAR"
-    ]
-  },
-  {
-    "label": "Transfer",
-    "patterns": [
-      "MEMBERSHIP FEE INSTALLMENT",
-      "PAYMENT RECEIVED - THANK YOU",
-      "260105S0412800WIRE",
-      "SEND E-TFR ***PaM",
-      "NAVAN, INC.      MSP",
-      "260119S0947900WIRE",
-      "BMO VISA     W2W5Q2",
-      "AMEX BILL PYMT   MSP",
-      "E-TRANSFER ***2cm",
-      "JX570 TFR-TO C/C",
-      "E-TRANSFER ***acQ",
-      "GC 1988-DEPOSIT",
-      "PAYMENT - THANK YOU",
-      "deposit (Free Interac E-Transfer)",
-      "bill payment (Pc-Bmo Visa 87129107)",
-      "bill payment (Pc-Bmo Visa 79861156)",
-      "customer transfer dr. (Investment Purchase)",
-      "bill payment (Pc-Bmo Visa 55939838)",
-      "deposit (Mb-Dep)"
-    ]
-  },
-  {
-    "label": "Food",
-    "patterns": [
-      "GALLERIA SUPERMARKET    NORTH YORK",
-      "FARM BOY #33 TORONTO    TORONTO",
-      "UBER EATS               HTTPS://HELP.UB",
-      "LIT ESPRESSO BAR 001    TORONTO",
-      "AUBERGE DU POMMIER      NORTH YORK",
-      "COSTCO BY INSTACART",
-      "TST-Chachees Chai Cafe"
-    ]
-  },
-  {
-    "label": "Transportation",
-    "patterns": [
-      "ESSO CIRCLE K           TORONTO",
-      "TORONTO PARKING AUTHORI TORONTO",
-      "SHELL C02525            TORONTO",
-      "SECURITY NATIONAL INSU  MONTREAL",
-      "407 ETR      W8L7W5",
-      "AIR-SERV A AN00530"
-    ]
-  },
-  {
-    "label": "Travel",
-    "patterns": []
-  },
-  {
-    "label": "Internet/Phone",
-    "patterns": [
-      "FIDO MOBILE ******0912  888-481-3436",
-      "BELL CANADA      BPY"
-    ]
-  },
-  {
-    "label": "Charity",
-    "patterns": [
-      "CHALICE(CANADA)         BEDFORD",
-      "UW OFFICE OF ADVANCEME"
-    ]
-  },
-  {
-    "label": "Amazon",
-    "patterns": []
-  },
-  {
-    "label": "Medical",
-    "patterns": [
-      "FELIX HEALTH INC.       TORONTO"
-    ]
-  },
-  {
-    "label": "Bank",
-    "patterns": [
-      "SCOTIABANK       INV",
-      "EQUITABLE LIFE   INS"
-    ]
-  },
-  {
-    "label": "OSAP",
-    "patterns": []
-  },
-  {
-    "label": "Learning",
-    "patterns": [
-      "MEDIUM MONTHLY          SAN FRANCISCO",
-      "BEATTIES"
-    ]
-  },
-  {
-    "label": "Dog",
-    "patterns": [
-      "SP WWW.ROVR.CA          TORONTO",
-      "PHI DIRECT              NORTH VANCOUVER"
-    ]
-  },
-  {
-    "label": "Etc",
-    "patterns": [
-      "STAPLES STORE #3        TORONTO",
-      "THE HOME DEPOT #7073    EAST YORK",
-      "PURE FITNESS 201920206  TORONTO",
-      "GOOGLE *YOUTUBEPREMIUM  G.CO/HELPPAY#",
-      "NETFLIX.COM             866-716-0414",
-      "GOOGLE *CLASH OF CLANS  G.CO/HELPPAY#",
-      "GOOGLE *PLAY BOOKS      G.CO/HELPPAY#",
-      "GOOGLE*PLAY BOOKS GOOGL G.CO HELPPAY#",
-      "PAYPAL           MSP",
-      "MONTHLY ACCOUNT FEE",
-      "ACCT BAL REBATE",
-      "MY STORAGE",
-      "GOOGLE*CLOUD KVX34J"
-    ]
-  }
-]
+{
+  "format": "enc-v1",
+  "items": [
+    {
+      "label": "Pay",
+      "patterns": [
+        "FRcbGxNzZWNyZXR2ZXJ5f3MVAgs",
+        "JiQrKzA_KWM2ICQ5Njstf3sGMTsnOH8",
+        "JiQrKzA_KWM2ICQ5Njstf3sIJiY3OzosPCF2",
+        "JS09KS82NzByISYjInI0PiExY3FzZHZtFzgsJ2UaPTc_dgo8cA",
+        "Mio-NT4hJC4zZXd2cmttf3sRLCAqOiIqchYxeg"
+      ]
+    },
+    {
+      "label": "Tax",
+      "patterns": [
+        "MDc3KjdzKi1yIDM6LDwtMD1lawYqJjkrJjZ_HCtq",
+        "NS0zLTY-IGMxLTVkcnJxETw3NzplDTk3OXkQPWw",
+        "PigzKytzaGMhLTEmNTMrO3NtDT03ID5lCzYtOGUMPGw",
+        "PSQ4MDQ2K2M8KiYiLXIgMCEuY3oLOyQxOnkGPDcocgo6fw"
+      ]
+    },
+    {
+      "label": "Transfer",
+      "patterns": [
+        "E2gGCx4dFgUXF3R8b3gKGgA",
+        "E2gGCx4dFgUXF3R8b3hrPD4",
+        "E2gGCx4dFgUXF3R8b3g4PAI",
+        "EQZyaGZrfW4WAAQZFhsN",
+        "GwAfGxoBFgsbFXQQABd5Fh0WFxMJGBsAHA0",
+        "GAQEGBF_ZQocBnp2ZXJ5f3MIEAI",
+        "BgQLFBodEWN_ZQAeBBwSfwoKFg",
+        "BgQLFBodEWMAABcTDAQcG3NoYwYNFRgOcgAQBg",
+        "BQAcHX8WaBcUF3R8b3hqLSk",
+        "BQAcHX8WaBcUF3R8b3g9KWs",
+        "BQAcHX8WaBcUF3R8b3gfGzI",
+        "BQAcHX8WaBcUF3R8b3gfJSU",
+        "BQAcHX8WaBcUF3R8b3gyDwI",
+        "BQAcHX8WaBcUF3R8b3gXFSo",
+        "BQAcHX8WaBcUF3R8b3gJPh4",
+        "BQAcHX8WaBcUF3R8b3gIPR4",
+        "BQAcHX8WaBcUF3R8b3gtHgE",
+        "BQAcHX8WaBcUF3R8b3gtGyY",
+        "BQAcHX8WaBcUF3R8b3gvGBs",
+        "BQAcHX8WaBcUF3R8b3gBPTY",
+        "ZHNiaG9mFnNmdGZudWIOFgEA",
+        "ZHNiaG5qFnNrcWNvdWIOFgEA",
+        "FwgXAX8RDA8eZQQPCAZ5f3MIEAI",
+        "FAgdeQkaFgJyZXR2ZQVrCGYUcQ",
+        "NCw-NX8jJDo_IDoiZXoJPH4HLj1lAj82M3lqZnxwa31nbmw",
+        "NCw-NX8jJDo_IDoiZXoJPH4HLj1lAj82M3loan11Y3RhYGw",
+        "NCw-NX8jJDo_IDoiZXoJPH4HLj1lAj82M3lnZHRxa3RkYWw",
+        "NTAhLTA-IDFyMSY3KyE_OiFlJyBrdH4MPC86IDEuNysgdhUnKzw7JDA3bA",
+        "MiAiNiw6MWN6AyYzIHIQMScgMTMmdBNoBis-PTYlNzd9",
+        "MiAiNiw6MWN6CDZ7ATcpdg",
+        "HB1nbm9zEQUAaAAZZRF2HA",
+        "ZHNiam5kFnZgcm1jdWIOFgEA",
+        "OSk-IH81NyYhJjslZXoNMCEqLSYqdBkrew",
+        "JTRyczQ6MSA6IDp2LSc7fz8sITc3IC9lOXl3ByoxPSsgOWUdN3Y",
+        "Nys8LD4_ZSU3IHQkICQ8LSAkLw",
+        "GAAGHxMaHW0RChl2ZXJ5f3NlY3JldHZlam1rfnBzZ2hmb3xh",
+        "OyogLTgyIiZyNTUvKDc3K3NtYGd1Ym93Ym12"
+      ]
+    },
+    {
+      "label": "Home",
+      "patterns": [
+        "FAsBeRIHAgZyAREGEXJ5f3MIFxU",
+        "FQQAFB5zZWNyZXR2ZXJ5f3MHEws",
+        "EyswKzY3IiZyAjUlZXJ5f3MHEws",
+        "Ag0XeRccCAZyAREGCgZ5fGR1dGFldHZlFxgMB2UaHRcf",
+        "AgoAeQoHDA8bEQ12ZQtgCmcJdg",
+        "AhYRGn9ic3VmZXR2ZXJ5f3MIEAI",
+        "GxxyCgscFwIVAA",
+        "BQAcHX8WaBcUF3R8b3gUGhg",
+        "Hg1iaG9zEQUAaAAZZRF2HA",
+        "PygiODwnZSg7MTc-IDx5LiYgJjw2dCcwM3l3ByoxPSsgOWUdN3Y",
+        "JCYhKn9idXRlZXwCKiA2MScqYx0rfQ",
+        "OiwmeTogNTE3Nic5ZTA4LXNtFz03OzgxPXkQPWw",
+        "Iyc3K38wJC0zITV5MDA8LSc3KiJlfAIqIDYxJypjHSt9",
+        "NyE2MCs6Ki0zKXQ1JCA9fzUgJg",
+        "OyoheTI8NmMxKjIwIDd5dwcqMT0rIDllHTd2",
+        "NygoN38-LjciZTc3bzApaD13djErZXZtam9pfndyZGhlZnJgeRA9bA",
+        "AwcXC38WBBcBZXR2ZXJ5f3NlY3JldHZlBhYNHAsXHQ",
+        "AwcXC38bCg8WDBoRFnIaHh0EBxNlHRhlBhYNHAsXHQ"
+      ]
+    },
+    {
+      "label": "Food",
+      "patterns": [
+        "FxAQHA0UAGMWEHQGCh8UFhYXY3JldHZlHBYNBw1jCwoGHQ",
+        "FQoBDRwcZQELZR0YFgYYHBIXFw",
+        "EAQAFH8RChpyZmdlZQYWDRwLFx1ldHZlBhYNHAsXHQ",
+        "EQQeFRoBDAJyFgEGAAAUHgEOBgZldHZlHBYNBw1jCwoGHQ",
+        "GgwGeRoAFREXFgcZZRAYDXN1c2NldHZlBhYNHAsXHQ",
+        "AhYGdBw7JCA6IDElZRExPjplADMjMQ",
+        "AwcXC38WBBcBZXR2ZXJ5f3NlY3JldHZlGg0LAxZ5fWocEwkCdwoR",
+        "ZHNiam9nFndidWBgdWIOFgEA",
+        "AgoAeQoHDA8bEQ12ZRlvFWoOdg",
+        "Ii03eS82NzA9KzU6ZTs3LCY3IjwmMXZtHjwpOjZjAyZ9",
+        "MCwkPH80MDohZWVufGp5dwcqMT0rIDllHTd2",
+        "LzByKjoyIyw9IXQvKiAyOzIpJnJtADk3PTcrPGUMPGw",
+        "JTA8NyYxNyw9LnQwKic3OzIxKj0rdCYkIHl3ByoxPSsgOWUdN3Y",
+        "NygoN38-LjciZTc3bzApbyY_cTdzZHZtam9pfndyZGhlZnJgeRA9bA",
+        "OCczeTw8MDEmNj0yIHIrOiAxIic3NXZtBjYtPCs3PWUbOGw",
+        "MCw2Nn8-KiE7KTF2b3hzdXlvdWBxYnZtamFnfnJ1ZmhnYXJjeRA9bA",
+        "OSo_NjI8ZS09NyA-ZSs2LThlMCYqJnZtHDYtJy1jCyomPWUdN3Y",
+        "JTVyLigkazE9MyZ4JjN5dwcqMT0rIDllHTd2",
+        "ISwmMTshJDQzKXR-AyA8OnMMLSYgJjcmchxyBzciPDYyMzd7",
+        "MiAwMCtzKCY_KnR-ASA4OSdlEyc3Nz4kITx2",
+        "NCw-NX8jJDo_IDoiZXoJPH4HLj1lAj82M3lrYH10ZHdlbmw",
+        "OyogLTgyIiZyNTUvKDc3K3NtYGd1Ym93Ymx2"
+      ]
+    },
+    {
+      "label": "Car/Transportation",
+      "patterns": [
+        "YnVleRoHF2NyZXR2ZQVhE2QSdg",
+        "FwwAdAwWFxVyBHQXC2JpamB1",
+        "ExYBFn8QDBERCRF2DnJ5f3NlY3JldHZlBhYNHAsXHQ",
+        "BQ0XFRNzBnNgcGZjZXJ5f3NlY3JldHZlBhYNHAsXHQ",
+        "BQARDA0aERpyCxUCDB0XHh9lChwWAXZlHxYRBxcGEwk",
+        "AgoAFhEHCmMCBAYdDBwefxIQFxoKBh9lBhYNHAsXHQ",
+        "AgoAFhEHCmMGBAx2ZXJ5f3MRAgo",
+        "BQAcHX8WaBcUF3R8b3hrHGE",
+        "JiQ8PDI8N2N6ETskKjwtMHMKLXs",
+        "JiAmKjIyNzdyZmdkdWZ5dwcqMT0rIDllHTd2",
+        "JiQrNDo9MWM0Nzs7ZX95dXlvaXh1Z3x1Z3l3a3Fq",
+        "MSQ-NTohLCJyNiEmICA0PiEuJiZlfBgqIC03cxwsIC50GSt7",
+        "Oio8PjB0NmNxZWZgZXoNMCEqLSYqdBkrew",
+        "IjYmdCw2JCs9NyczZSA8LCckNiAkOnZtBjYtPCs3PWUbOGw",
+        "NygoN38-LjciZTc3bzApaSIuems8ZnZtam9pfndyZGhlZnJgeRA9bA",
+        "PDwnPjAqJGM4JCQ3KzcqOnM3JiExNSM3M3l3ByoxPSsgOWUdN3Y",
+        "NTAhLTA-IDFyMSY3KyE_OiFlJyBrdH4VMXkLPGV3Z3ZjbnVia29kcXJhc2FgbA"
+      ]
+    },
+    {
+      "label": "Travel",
+      "patterns": [
+        "Jjc3Kis8ZSY1KT04MT03fyAxLXJtADk3PTcrPGUMPGw",
+        "NSowKn8xNyYzIXR-ET0rMD0xLHIKOn8",
+        "JTEzKz0mJighZWxmdWVhbWR3e2BlfG51YnRoa3duZXdsZGUdN3Y"
+      ]
+    },
+    {
+      "label": "Telecom/Subscriptions",
+      "patterns": [
+        "FAAeFX8QBA0TARV2ZXJ5f3MHEws",
+        "EAwWFn8eCgEbCRF2b3hzdXlvc2t0ZnZlamFnfnF7Y2hnYnZk",
+        "EQodHhMWZWkRCRUFDXIWGXMGDxMLB3ZlFXccHGoLFwkEBgQLeg",
+        "EQodHhMWZWkCCRUPZRAWEBgWY3JldHZlFXccHGoLFwkEBgQLeg",
+        "EQodHhMWZWkLCgECEBAcDwEADhsQGXZlFXccHGoLFwkEBgQLeg",
+        "EQodHhMWbwAeCgESZRkPB2BxCQ",
+        "EQodHhMWbxMeBA12Bx0WFABlBB0KExplFXccHGULFwkEBgQLeg",
+        "GAAGHxMaHW0RChl2ZXJ5f3NlY3JldHZlam9pfnJyZGhkYnRm",
+        "IiQgPjonZTMzNz92bQY2LTwrNz1lGzhs",
+        "JT83OjcmJC1yICwmNzcqLHNtFz03OzgxPXkQPWw"
+      ]
+    },
+    {
+      "label": "Charity",
+      "patterns": [
+        "FQ0TFRYQAGsRBBoXARNwf3NlY3JldHZlEBwbFQoRFg",
+        "AxJyFhkVDAAXZRsQZRMdCRILABcIEQ",
+        "Mio_MDE8NmMiLC4sJHJob2BwcHJtADk3PTcrPGUMPGw",
+        "Oio9Mn8gKmM1KjsyZT0pKzomIj5lfAIqIDYxJypjHSt9"
+      ]
+    },
+    {
+      "label": "Medical",
+      "patterns": [
+        "EAAeEAdzDQYTCQAeZRsXHH1lY3JldHZlBhYNHAsXHQ",
+        "MCQgNH8xKjpyZmdlZXoNMCEqLSYqdBkrew",
+        "Ijc7NTM6MC5yLTE3KSYxf35lLjs2Jz82IXl3HiwwISwnJSQnPj5zCi17",
+        "JS09KS82NzByISYjInI0PiExY3F8bHZtBjYtPCs3PWUbOGw"
+      ]
+    },
+    {
+      "label": "Bank",
+      "patterns": [
+        "FwYRDX8RBA9yFxEUBAYc",
+        "ExQHEAsSBw8XZRgfAxd5f3MMDQE",
+        "GwocDRcfHGMTBhcZEBwNfxUABg",
+        "BQYdDRYSBwIcDnR2ZXJ5f3MMDQQ",
+        "FQQcGBsSZRMXEXQeABMVCxtlChwWAQRlHBYNBw1jBAQaFQoHDxoB"
+      ]
+    },
+    {
+      "label": "Dog",
+      "patterns": [
+        "Bg0beRsaFwYREXR2ZXJ5f3NlY3JldHZlHBYNBw1jBAQaFQoHDxoB",
+        "BRVyDggEaxEdEwZ4BhN5f3NlY3JldHZlBhYNHAsXHQ",
+        "Iiw_eTc8Nzc9Kyd2ZmNgZmplax8sJyUsISo-JiIicgo6fw"
+      ]
+    },
+    {
+      "label": "Etc",
+      "patterns": [
+        "FAATDQsaABA",
+        "GwAWEAoeZQ4dCwAeCQt5f3NlY3JldHZlARgRcwMREwsXHxYRFg",
+        "BgQLCR4fZWNyZXR2ZXJ5f3MIEAI",
+        "BhAAHH8VDBccAAcFZWBpbmp3c2B1YnZlBhYNHAsXHQ",
+        "BRETCRMWFmMBERsEAHJ6bHNlY3JldHZlBhYNHAsXHQ",
+        "OzwnNzg3Ki01ZTMvKig4fzgkLzUwP3ZtBDgqNC0iPGUbOGw",
+        "MzYhNn8wLDExKTF2LnJxETw3NzplDTk3OXkQPWw",
+        "NygoN38-LjciZTc3ZXphaWVocWNzeWd1ZWt_HCtq"
+      ]
+    }
+  ]
+}

@@ -1,3 +1,10 @@
+import type {
+  PatternsFile,
+  PatternsWireV1,
+  TransactionArchiveEntry,
+  TransactionsArchiveWireV1,
+} from './types'
+
 // XOR-based obfuscation for storing numeric amounts in history files.
 // Encrypt before writing to disk, decrypt after reading.
 // The same token must be used for both — mismatched tokens produce NaN on decrypt.
@@ -66,4 +73,68 @@ export function decryptSeen(data: Record<string, string>): Record<string, string
   return Object.fromEntries(
     Object.entries(data).map(([enc, cat]) => [decryptString(enc), cat])
   )
+}
+
+const PATTERNS_FORMAT_V1 = 'enc-v1' as const
+
+export function encryptPatternsWire(data: PatternsFile): PatternsWireV1 {
+  return {
+    format: PATTERNS_FORMAT_V1,
+    items: data.map(e => ({
+      label: e.label,
+      patterns: e.patterns.map(p => encryptString(p)),
+    })),
+  }
+}
+
+/** Accepts legacy plaintext `PatternEntry[]` or `{ format: 'enc-v1', items }`. */
+const TRANSACTIONS_ARCHIVE_FORMAT_V1 = 'enc-v1' as const
+
+export function encryptTransactionArchiveWire(
+  entries: TransactionArchiveEntry[]
+): TransactionsArchiveWireV1 {
+  return {
+    format: TRANSACTIONS_ARCHIVE_FORMAT_V1,
+    items: entries.map(e => ({
+      ...e,
+      description: encryptString(e.description),
+    })),
+  }
+}
+
+/** Legacy: plaintext `TransactionArchiveEntry[]`. Current: `{ format: 'enc-v1', items }`. */
+export function decryptTransactionArchiveWire(raw: unknown): TransactionArchiveEntry[] {
+  if (Array.isArray(raw)) {
+    return raw as TransactionArchiveEntry[]
+  }
+  if (
+    raw &&
+    typeof raw === 'object' &&
+    (raw as TransactionsArchiveWireV1).format === TRANSACTIONS_ARCHIVE_FORMAT_V1 &&
+    Array.isArray((raw as TransactionsArchiveWireV1).items)
+  ) {
+    return (raw as TransactionsArchiveWireV1).items.map(e => ({
+      ...e,
+      description: decryptString(e.description),
+    }))
+  }
+  return []
+}
+
+export function decryptPatternsWire(wire: unknown): PatternsFile {
+  if (Array.isArray(wire)) {
+    return wire as PatternsFile
+  }
+  if (
+    wire &&
+    typeof wire === 'object' &&
+    (wire as PatternsWireV1).format === PATTERNS_FORMAT_V1 &&
+    Array.isArray((wire as PatternsWireV1).items)
+  ) {
+    return (wire as PatternsWireV1).items.map(e => ({
+      label: e.label,
+      patterns: e.patterns.map(p => decryptString(p)).filter(p => p.length > 0),
+    }))
+  }
+  return []
 }
