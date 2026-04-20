@@ -16,6 +16,7 @@ import {
   decryptPatternsWire,
   encryptTransactionArchiveWire,
 } from './obfuscate'
+import { isCanonicalPatternsForm, normalizePatternsFile } from './canonical-categories'
 
 // ---------------------------------------------------------------------------
 // Storage provider
@@ -103,14 +104,25 @@ async function writeJson(key: string, value: unknown): Promise<void> {
 // -- Public API --------------------------------------------------------------
 
 export async function readPatterns(): Promise<PatternsFile> {
+  let decoded: PatternsFile
   if (useRedis) {
     const value = await redisGet<unknown>('bk:patterns')
-    if (value !== null) return decryptPatternsWire(value)
+    if (value !== null) {
+      decoded = decryptPatternsWire(value)
+    } else {
+      const raw = await fileRead('data/patterns.json')
+      decoded = raw ? decryptPatternsWire(JSON.parse(raw)) : []
+    }
+  } else {
     const raw = await fileRead('data/patterns.json')
-    return raw ? decryptPatternsWire(JSON.parse(raw)) : []
+    decoded = raw ? decryptPatternsWire(JSON.parse(raw)) : []
   }
-  const raw = await fileRead('data/patterns.json')
-  return raw ? decryptPatternsWire(JSON.parse(raw)) : []
+
+  const normalized = normalizePatternsFile(decoded)
+  if (!isCanonicalPatternsForm(decoded)) {
+    await writePatterns(normalized)
+  }
+  return normalized
 }
 
 export async function writePatterns(data: PatternsFile): Promise<void> {

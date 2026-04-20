@@ -1,6 +1,8 @@
 /**
  * Migrates persisted category labels to the canonical set and rewrites patterns.json
  * (local data/ only). Run: npx tsx scripts/migrate-category-labels.ts
+ *
+ * Deployed Redis is self-healed on first readPatterns() (see lib/storage.ts).
  */
 import fs from 'fs/promises'
 import path from 'path'
@@ -12,8 +14,7 @@ import {
   decryptPatternsWire,
   encryptPatternsWire,
 } from '../lib/obfuscate'
-import { CANONICAL_CATEGORY_ORDER, normalizeCategoryLabel } from '../lib/canonical-categories'
-import type { PatternEntry } from '../lib/types'
+import { normalizeCategoryLabel, normalizePatternsFile } from '../lib/canonical-categories'
 
 async function migrateSeen() {
   const p = path.join(process.cwd(), 'data', 'seen.json')
@@ -78,10 +79,6 @@ async function migrateTransactionsDir() {
   }
 }
 
-function dedupePatterns(patterns: string[]): string[] {
-  return [...new Set(patterns)].sort((a, b) => a.localeCompare(b))
-}
-
 async function migratePatternsFile() {
   const p = path.join(process.cwd(), 'data', 'patterns.json')
   let rawText: string
@@ -92,20 +89,7 @@ async function migratePatternsFile() {
   }
   const wire = JSON.parse(rawText) as unknown
   const entries = decryptPatternsWire(wire)
-
-  const merged = new Map<string, string[]>()
-  for (const e of entries) {
-    const label = normalizeCategoryLabel(e.label)
-    const cur = merged.get(label) ?? []
-    cur.push(...e.patterns)
-    merged.set(label, cur)
-  }
-
-  const out: PatternEntry[] = CANONICAL_CATEGORY_ORDER.map(label => ({
-    label,
-    patterns: dedupePatterns(merged.get(label) ?? []),
-  }))
-
+  const out = normalizePatternsFile(entries)
   const outWire = encryptPatternsWire(out)
   await fs.writeFile(p, JSON.stringify(outWire, null, 2) + '\n', 'utf-8')
 }

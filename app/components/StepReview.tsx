@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
+import { normalizeCategoryLabel } from '@/lib/canonical-categories'
 import type { CategorizedTransaction, PatternEntry } from '@/lib/types'
 
 interface StepReviewProps {
@@ -168,6 +169,24 @@ export default function StepReview({ transactions, onNext, onBack }: StepReviewP
       .catch(() => {})
   }, [])
 
+  useEffect(() => {
+    if (allCategories.length === 0) return
+    setResolutions(prev => {
+      const next = { ...prev }
+      let changed = false
+      for (const k of Object.keys(next)) {
+        const v = next[k]
+        if (!v) continue
+        const n = normalizeCategoryLabel(v)
+        if (n !== v) {
+          next[k] = n
+          changed = true
+        }
+      }
+      return changed ? next : prev
+    })
+  }, [allCategories])
+
   const needsReview = useMemo(
     () => transactions.filter(t => t.status === 'unknown' || t.status === 'ambiguous'),
     [transactions]
@@ -192,7 +211,12 @@ export default function StepReview({ transactions, onNext, onBack }: StepReviewP
 
   // Map: description -> chosen category
   const [resolutions, setResolutions] = useState<Record<string, string>>(() =>
-    Object.fromEntries(groups.map(g => [g.description, g.candidates[0] ?? '']))
+    Object.fromEntries(
+      groups.map(g => [
+        g.description,
+        g.candidates[0] ? normalizeCategoryLabel(g.candidates[0]) : '',
+      ])
+    )
   )
 
   const resolvedCount = Object.values(resolutions).filter(v => v.trim()).length
@@ -230,7 +254,10 @@ export default function StepReview({ transactions, onNext, onBack }: StepReviewP
 
   // Merge allCategories with any candidates not already in the list
   const categoriesForGroup = (g: Group): string[] => {
-    const extra = g.candidates.filter(c => !allCategories.includes(c))
+    const extra = g.candidates
+      .map(normalizeCategoryLabel)
+      .filter((c, i, arr) => arr.indexOf(c) === i)
+      .filter(c => !allCategories.includes(c))
     return [...allCategories, ...extra]
   }
 
