@@ -5,17 +5,17 @@
       "label": "Pay",
       "patterns": [
         "FRcbGxNzZWNyZXR2ZXJ5f3MVAgs",
+        "Mio-NT4hJC4zZXd2cmttf3sRLCAqOiIqchYxeg",
         "JiQrKzA_KWM2ICQ5Njstf3sGMTsnOH8",
         "JiQrKzA_KWM2ICQ5Njstf3sIJiY3OzosPCF2",
-        "JS09KS82NzByISYjInI0PiExY3FzZHZtFzgsJ2UaPTc_dgo8cA",
-        "Mio-NT4hJC4zZXd2cmttf3sRLCAqOiIqchYxeg"
+        "JS09KS82NzByISYjInI0PiExY3FzZHZtFzgsJ2UaPTc_dgo8cA"
       ]
     },
     {
       "label": "Tax",
       "patterns": [
-        "MDc3KjdzKi1yIDM6LDwtMD1lawYqJjkrJjZ_HCtq",
         "NS0zLTY-IGMxLTVkcnJxETw3NzplDTk3OXkQPWw",
+        "MDc3KjdzKi1yIDM6LDwtMD1lawYqJjkrJjZ_HCtq",
         "PigzKytzaGMhLTEmNTMrO3NtDT03ID5lCzYtOGUMPGw",
         "PSQ4MDQ2K2M8KiYiLXIgMCEuY3oLOyQxOnkGPDcocgo6fw"
       ]
@@ -23,12 +23,28 @@
     {
       "label": "Transfer",
       "patterns": [
-        "E2gGCx4dFgUXF3R8b3gKGgA",
+        "ZHNiaG9mFnNmdGZudWIOFgEA",
+        "ZHNiaG5qFnNrcWNvdWIOFgEA",
+        "ZHNiam5kFnZgcm1jdWIOFgEA",
+        "FwgXAX8RDA8eZQQPCAZ5f3MIEAI",
+        "Nys8LD4_ZSU3IHQkICQ8LSAkLw",
+        "NCw-NX8jJDo_IDoiZXoJPH4HLj1lAj82M3lqZnxwa31nbmw",
+        "NCw-NX8jJDo_IDoiZXoJPH4HLj1lAj82M3loan11Y3RhYGw",
+        "NCw-NX8jJDo_IDoiZXoJPH4HLj1lAj82M3lnZHRxa3RkYWw",
+        "FAgdeQkaFgJyZXR2ZQVrCGYUcQ",
+        "NTAhLTA-IDFyMSY3KyE_OiFlJyBrdH4MPC86IDEuNysgdhUnKzw7JDA3bA",
+        "MiAiNiw6MWN6AyYzIHIQMScgMTMmdBNoBis-PTYlNzd9",
+        "MiAiNiw6MWN6CDZ7ATcpdg",
         "E2gGCx4dFgUXF3R8b3hrPD4",
         "E2gGCx4dFgUXF3R8b3g4PAI",
+        "E2gGCx4dFgUXF3R8b3gKGgA",
         "EQZyaGZrfW4WAAQZFhsN",
+        "HB1nbm9zEQUAaAAZZRF2HA",
         "GwAfGxoBFgsbFXQQABd5Fh0WFxMJGBsAHA0",
+        "OyogLTgyIiZyNTUvKDc3K3NtYGd1Ym93Ym12",
         "GAQEGBF_ZQocBnp2ZXJ5f3MIEAI",
+        "GAAGHxMaHW0RChl2ZXJ5f3NlY3JldHZlam1rfnBzZ2hmb3xh",
+        "OSk-IH81NyYhJjslZXoNMCEqLSYqdBkrew",
         "BgQLFBodEWN_ZQAeBBwSfwoKFg",
         "BgQLFBodEWMAABcTDAQcG3NoYwYNFRgOcgAQBg",
         "BQAcHX8WaBcUF3R8b3hqLSk",
@@ -43,44 +59,28 @@
         "BQAcHX8WaBcUF3R8b3gtGyY",
         "BQAcHX8WaBcUF3R8b3gvGBs",
         "BQAcHX8WaBcUF3R8b3gBPTY",
-        "ZHNiaG9mFnNmdGZudWIOFgEA",
-        "ZHNiaG5qFnNrcWNvdWIOFgEA",
-        "FwgXAX8RDA8eZQQPCAZ5f3MIEAI",
-        "FAgdeQkaFgJyZXR2ZQVrCGYUcQ",
-        "NCw-NX8jJDo_IDoiZXoJPH4HLj1lAj82M3lqZnxwa31nbmw",
-        "NCw-NX8jJDo_IDoiZXoJPH4HLj1lAj82M3loan11Y3RhYGw",
-        "NCw-NX8jJDo_IDoiZXoJPH4HLj1lAj82M3lnZHRxa3RkYWw",
-        "NTAhLTA-IDFyMSY3KyE_OiFlJyBrdH4MPC86IDEuNysgdhUnKzw7JDA3bA",
-        "MiAiNiw6MWN6AyYzIHIQMScgMTMmdBNoBis-PTYlNzd9",
-        "MiAiNiw6MWN6CDZ7ATcpdg",
-        "HB1nbm9zEQUAaAAZZRF2HA",
-        "ZHNiam5kFnZgcm1jdWIOFgEA",
-        "OSk-IH81NyYhJjslZXoNMCEqLSYqdBkrew",
-        "JTRyczQ6MSA6IDp2LSc7fz8sITc3IC9lOXl3ByoxPSsgOWUdN3Y",
-        "Nys8LD4_ZSU3IHQkICQ8LSAkLw",
-        "GAAGHxMaHW0RChl2ZXJ5f3NlY3JldHZlam1rfnBzZ2hmb3xh",
-        "OyogLTgyIiZyNTUvKDc3K3NtYGd1Ym93Ym12"
+        "JTRyczQ6MSA6IDp2LSc7fz8sITc3IC9lOXl3ByoxPSsgOWUdN3Y"
       ]
     },
     {
       "label": "Home",
       "patterns": [
+        "NyE2MCs6Ki0zKXQ1JCA9fzUgJg",
+        "NygoN38-LjciZTc3bzApaD13djErZXZtam9pfndyZGhlZnJgeRA9bA",
         "FAsBeRIHAgZyAREGEXJ5f3MIFxU",
         "FQQAFB5zZWNyZXR2ZXJ5f3MHEws",
         "EyswKzY3IiZyAjUlZXJ5f3MHEws",
+        "Hg1iaG9zEQUAaAAZZRF2HA",
+        "PygiODwnZSg7MTc-IDx5LiYgJjw2dCcwM3l3ByoxPSsgOWUdN3Y",
+        "OiwmeTogNTE3Nic5ZTA4LXNtFz03OzgxPXkQPWw",
+        "OyoheTI8NmMxKjIwIDd5dwcqMT0rIDllHTd2",
+        "GxxyCgscFwIVAA",
+        "JCYhKn9idXRlZXwCKiA2MScqYx0rfQ",
+        "BQAcHX8WaBcUF3R8b3gUGhg",
         "Ag0XeRccCAZyAREGCgZ5fGR1dGFldHZlFxgMB2UaHRcf",
         "AgoAeQoHDA8bEQ12ZQtgCmcJdg",
         "AhYRGn9ic3VmZXR2ZXJ5f3MIEAI",
-        "GxxyCgscFwIVAA",
-        "BQAcHX8WaBcUF3R8b3gUGhg",
-        "Hg1iaG9zEQUAaAAZZRF2HA",
-        "PygiODwnZSg7MTc-IDx5LiYgJjw2dCcwM3l3ByoxPSsgOWUdN3Y",
-        "JCYhKn9idXRlZXwCKiA2MScqYx0rfQ",
-        "OiwmeTogNTE3Nic5ZTA4LXNtFz03OzgxPXkQPWw",
         "Iyc3K38wJC0zITV5MDA8LSc3KiJlfAIqIDYxJypjHSt9",
-        "NyE2MCs6Ki0zKXQ1JCA9fzUgJg",
-        "OyoheTI8NmMxKjIwIDd5dwcqMT0rIDllHTd2",
-        "NygoN38-LjciZTc3bzApaD13djErZXZtam9pfndyZGhlZnJgeRA9bA",
         "AwcXC38WBBcBZXR2ZXJ5f3NlY3JldHZlBhYNHAsXHQ",
         "AwcXC38bCg8WDBoRFnIaHh0EBxNlHRhlBhYNHAsXHQ"
       ]
@@ -88,28 +88,28 @@
     {
       "label": "Food",
       "patterns": [
+        "ZHNiam9nFndidWBgdWIOFgEA",
+        "NygoN38-LjciZTc3bzApbyY_cTdzZHZtam9pfndyZGhlZnJgeRA9bA",
         "FxAQHA0UAGMWEHQGCh8UFhYXY3JldHZlHBYNBw1jCwoGHQ",
+        "NCw-NX8jJDo_IDoiZXoJPH4HLj1lAj82M3lrYH10ZHdlbmw",
         "FQoBDRwcZQELZR0YFgYYHBIXFw",
+        "MiAwMCtzKCY_KnR-ASA4OSdlEyc3Nz4kITx2",
         "EAQAFH8RChpyZmdlZQYWDRwLFx1ldHZlBhYNHAsXHQ",
+        "MCw2Nn8-KiE7KTF2b3hzdXlvdWBxYnZtamFnfnJ1ZmhnYXJjeRA9bA",
+        "MCwkPH80MDohZWVufGp5dwcqMT0rIDllHTd2",
         "EQQeFRoBDAJyFgEGAAAUHgEOBgZldHZlHBYNBw1jCwoGHQ",
         "GgwGeRoAFREXFgcZZRAYDXN1c2NldHZlBhYNHAsXHQ",
-        "AhYGdBw7JCA6IDElZRExPjplADMjMQ",
-        "AwcXC38WBBcBZXR2ZXJ5f3NlY3JldHZlGg0LAxZ5fWocEwkCdwoR",
-        "ZHNiam9nFndidWBgdWIOFgEA",
-        "AgoAeQoHDA8bEQ12ZRlvFWoOdg",
-        "Ii03eS82NzA9KzU6ZTs3LCY3IjwmMXZtHjwpOjZjAyZ9",
-        "MCwkPH80MDohZWVufGp5dwcqMT0rIDllHTd2",
-        "LzByKjoyIyw9IXQvKiAyOzIpJnJtADk3PTcrPGUMPGw",
-        "JTA8NyYxNyw9LnQwKic3OzIxKj0rdCYkIHl3ByoxPSsgOWUdN3Y",
-        "NygoN38-LjciZTc3bzApbyY_cTdzZHZtam9pfndyZGhlZnJgeRA9bA",
+        "OyogLTgyIiZyNTUvKDc3K3NtYGd1Ym93Ymx2",
         "OCczeTw8MDEmNj0yIHIrOiAxIic3NXZtBjYtPCs3PWUbOGw",
-        "MCw2Nn8-KiE7KTF2b3hzdXlvdWBxYnZtamFnfnJ1ZmhnYXJjeRA9bA",
         "OSo_NjI8ZS09NyA-ZSs2LThlMCYqJnZtHDYtJy1jCyomPWUdN3Y",
         "JTVyLigkazE9MyZ4JjN5dwcqMT0rIDllHTd2",
+        "JTA8NyYxNyw9LnQwKic3OzIxKj0rdCYkIHl3ByoxPSsgOWUdN3Y",
+        "Ii03eS82NzA9KzU6ZTs3LCY3IjwmMXZtHjwpOjZjAyZ9",
+        "AgoAeQoHDA8bEQ12ZRlvFWoOdg",
+        "AhYGdBw7JCA6IDElZRExPjplADMjMQ",
+        "AwcXC38WBBcBZXR2ZXJ5f3NlY3JldHZlGg0LAxZ5fWocEwkCdwoR",
         "ISwmMTshJDQzKXR-AyA8OnMMLSYgJjcmchxyBzciPDYyMzd7",
-        "MiAwMCtzKCY_KnR-ASA4OSdlEyc3Nz4kITx2",
-        "NCw-NX8jJDo_IDoiZXoJPH4HLj1lAj82M3lrYH10ZHdlbmw",
-        "OyogLTgyIiZyNTUvKDc3K3NtYGd1Ym93Ymx2"
+        "LzByKjoyIyw9IXQvKiAyOzIpJnJtADk3PTcrPGUMPGw"
       ]
     },
     {
@@ -117,28 +117,28 @@
       "patterns": [
         "YnVleRoHF2NyZXR2ZQVhE2QSdg",
         "FwwAdAwWFxVyBHQXC2JpamB1",
+        "NygoN38-LjciZTc3bzApaSIuems8ZnZtam9pfndyZGhlZnJgeRA9bA",
+        "NTAhLTA-IDFyMSY3KyE_OiFlJyBrdH4VMXkLPGV3Z3ZjbnVia29kcXJhc2FgbA",
         "ExYBFn8QDBERCRF2DnJ5f3NlY3JldHZlBhYNHAsXHQ",
-        "BQ0XFRNzBnNgcGZjZXJ5f3NlY3JldHZlBhYNHAsXHQ",
+        "MSQ-NTohLCJyNiEmICA0PiEuJiZlfBgqIC03cxwsIC50GSt7",
+        "PDwnPjAqJGM4JCQ3KzcqOnM3JiExNSM3M3l3ByoxPSsgOWUdN3Y",
+        "Oio8PjB0NmNxZWZgZXoNMCEqLSYqdBkrew",
+        "JiQ8PDI8N2N6ETskKjwtMHMKLXs",
+        "JiQrNDo9MWM0Nzs7ZX95dXlvaXh1Z3x1Z3l3a3Fq",
+        "JiAmKjIyNzdyZmdkdWZ5dwcqMT0rIDllHTd2",
         "BQARDA0aERpyCxUCDB0XHh9lChwWAXZlHxYRBxcGEwk",
+        "BQAcHX8WaBcUF3R8b3hrHGE",
+        "BQ0XFRNzBnNgcGZjZXJ5f3NlY3JldHZlBhYNHAsXHQ",
         "AgoAFhEHCmMCBAYdDBwefxIQFxoKBh9lBhYNHAsXHQ",
         "AgoAFhEHCmMGBAx2ZXJ5f3MRAgo",
-        "BQAcHX8WaBcUF3R8b3hrHGE",
-        "JiQ8PDI8N2N6ETskKjwtMHMKLXs",
-        "JiAmKjIyNzdyZmdkdWZ5dwcqMT0rIDllHTd2",
-        "JiQrNDo9MWM0Nzs7ZX95dXlvaXh1Z3x1Z3l3a3Fq",
-        "MSQ-NTohLCJyNiEmICA0PiEuJiZlfBgqIC03cxwsIC50GSt7",
-        "Oio8PjB0NmNxZWZgZXoNMCEqLSYqdBkrew",
-        "IjYmdCw2JCs9NyczZSA8LCckNiAkOnZtBjYtPCs3PWUbOGw",
-        "NygoN38-LjciZTc3bzApaSIuems8ZnZtam9pfndyZGhlZnJgeRA9bA",
-        "PDwnPjAqJGM4JCQ3KzcqOnM3JiExNSM3M3l3ByoxPSsgOWUdN3Y",
-        "NTAhLTA-IDFyMSY3KyE_OiFlJyBrdH4VMXkLPGV3Z3ZjbnVia29kcXJhc2FgbA"
+        "IjYmdCw2JCs9NyczZSA8LCckNiAkOnZtBjYtPCs3PWUbOGw"
       ]
     },
     {
       "label": "Travel",
       "patterns": [
-        "Jjc3Kis8ZSY1KT04MT03fyAxLXJtADk3PTcrPGUMPGw",
         "NSowKn8xNyYzIXR-ET0rMD0xLHIKOn8",
+        "Jjc3Kis8ZSY1KT04MT03fyAxLXJtADk3PTcrPGUMPGw",
         "JTEzKz0mJighZWxmdWVhbWR3e2BlfG51YnRoa3duZXdsZGUdN3Y"
       ]
     },
@@ -153,36 +153,36 @@
         "EQodHhMWbwAeCgESZRkPB2BxCQ",
         "EQodHhMWbxMeBA12Bx0WFABlBB0KExplFXccHGULFwkEBgQLeg",
         "GAAGHxMaHW0RChl2ZXJ5f3NlY3JldHZlam9pfnJyZGhkYnRm",
-        "IiQgPjonZTMzNz92bQY2LTwrNz1lGzhs",
-        "JT83OjcmJC1yICwmNzcqLHNtFz03OzgxPXkQPWw"
+        "JT83OjcmJC1yICwmNzcqLHNtFz03OzgxPXkQPWw",
+        "IiQgPjonZTMzNz92bQY2LTwrNz1lGzhs"
       ]
     },
     {
       "label": "Charity",
       "patterns": [
         "FQ0TFRYQAGsRBBoXARNwf3NlY3JldHZlEBwbFQoRFg",
-        "AxJyFhkVDAAXZRsQZRMdCRILABcIEQ",
         "Mio_MDE8NmMiLC4sJHJob2BwcHJtADk3PTcrPGUMPGw",
-        "Oio9Mn8gKmM1KjsyZT0pKzomIj5lfAIqIDYxJypjHSt9"
+        "Oio9Mn8gKmM1KjsyZT0pKzomIj5lfAIqIDYxJypjHSt9",
+        "AxJyFhkVDAAXZRsQZRMdCRILABcIEQ"
       ]
     },
     {
       "label": "Medical",
       "patterns": [
-        "EAAeEAdzDQYTCQAeZRsXHH1lY3JldHZlBhYNHAsXHQ",
         "MCQgNH8xKjpyZmdlZXoNMCEqLSYqdBkrew",
-        "Ijc7NTM6MC5yLTE3KSYxf35lLjs2Jz82IXl3HiwwISwnJSQnPj5zCi17",
-        "JS09KS82NzByISYjInI0PiExY3F8bHZtBjYtPCs3PWUbOGw"
+        "EAAeEAdzDQYTCQAeZRsXHH1lY3JldHZlBhYNHAsXHQ",
+        "JS09KS82NzByISYjInI0PiExY3F8bHZtBjYtPCs3PWUbOGw",
+        "Ijc7NTM6MC5yLTE3KSYxf35lLjs2Jz82IXl3HiwwISwnJSQnPj5zCi17"
       ]
     },
     {
       "label": "Bank",
       "patterns": [
         "FwYRDX8RBA9yFxEUBAYc",
+        "FQQcGBsSZRMXEXQeABMVCxtlChwWAQRlHBYNBw1jBAQaFQoHDxoB",
         "ExQHEAsSBw8XZRgfAxd5f3MMDQE",
         "GwocDRcfHGMTBhcZEBwNfxUABg",
-        "BQYdDRYSBwIcDnR2ZXJ5f3MMDQQ",
-        "FQQcGBsSZRMXEXQeABMVCxtlChwWAQRlHBYNBw1jBAQaFQoHDxoB"
+        "BQYdDRYSBwIcDnR2ZXJ5f3MMDQQ"
       ]
     },
     {
@@ -196,14 +196,14 @@
     {
       "label": "Etc",
       "patterns": [
+        "NygoN38-LjciZTc3ZXphaWVocWNzeWd1ZWt_HCtq",
         "FAATDQsaABA",
+        "MzYhNn8wLDExKTF2LnJxETw3NzplDTk3OXkQPWw",
         "GwAWEAoeZQ4dCwAeCQt5f3NlY3JldHZlARgRcwMREwsXHxYRFg",
+        "OzwnNzg3Ki01ZTMvKig4fzgkLzUwP3ZtBDgqNC0iPGUbOGw",
         "BgQLCR4fZWNyZXR2ZXJ5f3MIEAI",
         "BhAAHH8VDBccAAcFZWBpbmp3c2B1YnZlBhYNHAsXHQ",
-        "BRETCRMWFmMBERsEAHJ6bHNlY3JldHZlBhYNHAsXHQ",
-        "OzwnNzg3Ki01ZTMvKig4fzgkLzUwP3ZtBDgqNC0iPGUbOGw",
-        "MzYhNn8wLDExKTF2LnJxETw3NzplDTk3OXkQPWw",
-        "NygoN38-LjciZTc3ZXphaWVocWNzeWd1ZWt_HCtq"
+        "BRETCRMWFmMBERsEAHJ6bHNlY3JldHZlBhYNHAsXHQ"
       ]
     }
   ]

@@ -1,6 +1,6 @@
 /**
- * Migrates persisted labels after a category rename (local data/ only).
- * Run: npx tsx scripts/migrate-category-labels.ts
+ * Migrates persisted category labels to the canonical set and rewrites patterns.json
+ * (local data/ only). Run: npx tsx scripts/migrate-category-labels.ts
  */
 import fs from 'fs/promises'
 import path from 'path'
@@ -9,29 +9,17 @@ import {
   encryptHistory,
   decryptTransactionArchiveWire,
   encryptTransactionArchiveWire,
+  decryptPatternsWire,
+  encryptPatternsWire,
 } from '../lib/obfuscate'
-
-const OLD_TO_NEW: Record<string, string> = {
-  'Mort/Maint': 'Home',
-  'Cash Withdrawl': 'Bank',
-  'Cash Withdrawal': 'Bank',
-  'E-Transfer': 'Transfer',
-  'Transportation': 'Car/Transportation',
-  'Internet/Phone': 'Telecom/Subscriptions',
-  'Amazon': 'Etc',
-  'OSAP': 'Tax',
-  'Learning': 'Etc',
-}
-
-function mapLabel(label: string): string {
-  return OLD_TO_NEW[label] ?? label
-}
+import { CANONICAL_CATEGORY_ORDER, normalizeCategoryLabel } from '../lib/canonical-categories'
+import type { PatternEntry } from '../lib/types'
 
 async function migrateSeen() {
   const p = path.join(process.cwd(), 'data', 'seen.json')
   const raw = JSON.parse(await fs.readFile(p, 'utf-8')) as Record<string, string>
   for (const k of Object.keys(raw)) {
-    raw[k] = mapLabel(raw[k])
+    raw[k] = normalizeCategoryLabel(raw[k])
   }
   await fs.writeFile(p, JSON.stringify(raw, null, 2) + '\n', 'utf-8')
 }
@@ -52,7 +40,7 @@ async function migrateHistoryDir() {
     const merged: Record<string, number> = {}
     for (const [k, v] of Object.entries(amounts)) {
       if (k === 'Total') continue
-      const nk = mapLabel(k)
+      const nk = normalizeCategoryLabel(k)
       merged[nk] = (merged[nk] ?? 0) + v
     }
     const total = Object.values(merged).reduce((a, b) => a + b, 0)
@@ -83,18 +71,53 @@ async function migrateTransactionsDir() {
     if (!isLegacyArray && !isWire) continue
     const arr = decryptTransactionArchiveWire(raw)
     for (const row of arr) {
-      if (typeof row.category === 'string') row.category = mapLabel(row.category)
+      if (typeof row.category === 'string') row.category = normalizeCategoryLabel(row.category)
     }
     const out = encryptTransactionArchiveWire(arr)
     await fs.writeFile(fp, JSON.stringify(out, null, 2) + '\n', 'utf-8')
   }
 }
 
+function dedupePatterns(patterns: string[]): string[] {
+  return [...new Set(patterns)].sort((a, b) => a.localeCompare(b))
+}
+
+async function migratePatternsFile() {
+  const p = path.join(process.cwd(), 'data', 'patterns.json')
+  let rawText: string
+  try {
+    rawText = await fs.readFile(p, 'utf-8')
+  } catch {
+    return
+  }
+  const wire = JSON.parse(rawText) as unknown
+  const entries = decryptPatternsWire(wire)
+
+  const merged = new Map<string, string[]>()
+  for (const e of entries) {
+    const label = normalizeCategoryLabel(e.label)
+    const cur = merged.get(label) ?? []
+    cur.push(...e.patterns)
+    merged.set(label, cur)
+  }
+
+  const out: PatternEntry[] = CANONICAL_CATEGORY_ORDER.map(label => ({
+    label,
+    patterns: dedupePatterns(merged.get(label) ?? []),
+  }))
+
+  const outWire = encryptPatternsWire(out)
+  await fs.writeFile(p, JSON.stringify(outWire, null, 2) + '\n', 'utf-8')
+}
+
 async function main() {
+  await migratePatternsFile()
   await migrateSeen()
   await migrateHistoryDir()
   await migrateTransactionsDir()
-  console.log('Migrated seen.json, data/history/*.json, data/transactions/*.json')
+  console.log(
+    'Migrated data/patterns.json (canonical labels only), seen.json, history/*.json, transactions/*.json'
+  )
 }
 
 main().catch(e => {
