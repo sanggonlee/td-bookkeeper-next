@@ -287,6 +287,12 @@ const MONTH_NAMES = [
   'July', 'August', 'September', 'October', 'November', 'December',
 ]
 
+/** Format a signed net value where positive = inflow, negative = outflow. */
+function fmtNet(value: number): string {
+  if (value < 0) return `-$${Math.abs(value).toFixed(2)}`
+  return `$${value.toFixed(2)}`
+}
+
 export default function StepResults({
   transactions,
   resolutions,
@@ -440,7 +446,7 @@ export default function StepResults({
             <thead>
               <tr>
                 <Th>Category</Th>
-                <Th style={{ textAlign: 'right' }}>Net Spending</Th>
+                <Th style={{ textAlign: 'right' }}>Net</Th>
               </tr>
             </thead>
             <tbody>
@@ -449,12 +455,12 @@ export default function StepResults({
                 .map(([cat, val]) => (
                   <tr key={cat}>
                     <Td>{cat}</Td>
-                    <Td style={{ textAlign: 'right' }}>${val.toFixed(2)}</Td>
+                    <Td style={{ textAlign: 'right' }}>{fmtNet(-val)}</Td>
                   </tr>
                 ))}
               <TotalRow>
                 <Td>Total</Td>
-                <Td style={{ textAlign: 'right' }}>${(currentTotals['Total'] ?? 0).toFixed(2)}</Td>
+                <Td style={{ textAlign: 'right' }}>{fmtNet(-(currentTotals['Total'] ?? 0))}</Td>
               </TotalRow>
             </tbody>
           </SummaryTable>
@@ -492,10 +498,10 @@ export default function StepResults({
                     <CategorySummaryLabel>{cat}</CategorySummaryLabel>
                     <CategorySummaryMeta>
                       {rows.length} line{rows.length === 1 ? '' : 's'} · Net{' '}
-                      <strong style={{ color: '#111' }}>${savedNet.toFixed(2)}</strong>
+                      <strong style={{ color: '#111' }}>{fmtNet(-savedNet)}</strong>
                       {savedNet !== sumNet && rows.length > 0 && (
                         <span style={{ marginLeft: 8 }}>
-                          (from lines: ${sumNet.toFixed(2)})
+                          (from lines: {fmtNet(-sumNet)})
                         </span>
                       )}
                     </CategorySummaryMeta>
@@ -520,7 +526,7 @@ export default function StepResults({
                       </thead>
                       <tbody>
                         {rows.map((t, i) => {
-                          const net = t.outflow - t.inflow
+                          const net = t.inflow - t.outflow
                           return (
                             <tr key={`${t.date}-${t.description}-${i}`}>
                               <DetailTd>{t.date}</DetailTd>
@@ -534,7 +540,7 @@ export default function StepResults({
                               <DetailTd style={{ textAlign: 'right' }}>
                                 {t.outflow > 0 ? `$${t.outflow.toFixed(2)}` : '—'}
                               </DetailTd>
-                              <DetailTd style={{ textAlign: 'right' }}>${net.toFixed(2)}</DetailTd>
+                              <DetailTd style={{ textAlign: 'right' }}>{fmtNet(net)}</DetailTd>
                             </tr>
                           )
                         })}
@@ -548,7 +554,7 @@ export default function StepResults({
                           <DetailTd style={{ textAlign: 'right' }}>
                             ${rows.reduce((s, t) => s + t.outflow, 0).toFixed(2)}
                           </DetailTd>
-                          <DetailTd style={{ textAlign: 'right' }}>${sumNet.toFixed(2)}</DetailTd>
+                          <DetailTd style={{ textAlign: 'right' }}>{fmtNet(-sumNet)}</DetailTd>
                         </DetailFoot>
                       </tfoot>
                     </DetailTable>
