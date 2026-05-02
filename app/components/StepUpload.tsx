@@ -192,7 +192,7 @@ export default function StepUpload({ onNext }: StepUploadProps) {
 
       <HistoryLinkRow>
         <HistoryLinkButton type="button" onClick={() => setHistoryOpen(true)}>
-          View all-time saved reports
+          View historical reports
         </HistoryLinkButton>
       </HistoryLinkRow>
 

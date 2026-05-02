@@ -15,6 +15,7 @@ import {
   encryptPatternsWire,
   decryptPatternsWire,
   encryptTransactionArchiveWire,
+  decryptTransactionArchiveWire,
 } from './obfuscate'
 import { isCanonicalPatternsForm, normalizePatternsFile } from './canonical-categories'
 
@@ -176,6 +177,23 @@ function toArchiveEntries(transactions: CategorizedTransaction[]): TransactionAr
     source: t.source,
     category: t.category ?? 'Uncategorized',
   }))
+}
+
+export async function readTransactionArchive(yearMonth: string): Promise<TransactionArchiveEntry[]> {
+  let raw: unknown
+  if (useRedis) {
+    raw = await redisGet<unknown>(`bk:transactions:${yearMonth}`)
+    if (raw === null) return []
+  } else {
+    const str = await fileRead(`data/transactions/${yearMonth}.json`)
+    if (str === null) return []
+    try {
+      raw = JSON.parse(str)
+    } catch {
+      return []
+    }
+  }
+  return decryptTransactionArchiveWire(raw)
 }
 
 export async function writeTransactionArchive(
