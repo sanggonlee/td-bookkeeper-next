@@ -15,6 +15,8 @@ import type { HistoryFile } from '@/lib/types'
 
 interface ChartProps {
   history: Record<string, HistoryFile>
+  selectedCategories?: Set<string>
+  onCategoryToggle?: (category: string) => void
 }
 
 const COLORS = [
@@ -62,7 +64,7 @@ function formatMonthLabel(ym: string): string {
   return `${MONTH_SHORT[p.m]} ${p.y}`
 }
 
-export default function Chart({ history }: ChartProps) {
+export default function Chart({ history, selectedCategories, onCategoryToggle }: ChartProps) {
   const { data, categories } = useMemo(() => {
     const monthKeys = Object.keys(history).filter(k => parseYm(k) !== null).sort()
     if (monthKeys.length === 0) {
@@ -129,10 +131,22 @@ export default function Chart({ history }: ChartProps) {
           labelFormatter={(label) => String(label ?? '')}
         />
         <Legend
-          wrapperStyle={{ fontSize: 12, paddingTop: 12 }}
+          wrapperStyle={{ fontSize: 12, paddingTop: 12, cursor: 'pointer' }}
           layout="horizontal"
           verticalAlign="bottom"
           align="center"
+          onClick={(payload) => onCategoryToggle?.(payload.dataKey as string)}
+          formatter={(value) => (
+            <span
+              style={{
+                opacity: !selectedCategories || selectedCategories.has(value) ? 1 : 0.35,
+                cursor: 'pointer',
+                userSelect: 'none',
+              }}
+            >
+              {value}
+            </span>
+          )}
         />
         {categories.map((cat, i) => (
           <Line
@@ -145,6 +159,7 @@ export default function Chart({ history }: ChartProps) {
             dot={{ r: 3, strokeWidth: 1 }}
             activeDot={{ r: 5 }}
             isAnimationActive={false}
+            hide={selectedCategories !== undefined && !selectedCategories.has(cat)}
           />
         ))}
       </LineChart>

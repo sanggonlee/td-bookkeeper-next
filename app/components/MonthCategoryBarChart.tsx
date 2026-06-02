@@ -22,11 +22,15 @@ const COLORS = [
 interface MonthCategoryBarChartProps {
   totals: HistoryFile
   categoryOrder: string[]
+  selectedCategories?: Set<string>
+  onCategoryToggle?: (category: string) => void
 }
 
 export default function MonthCategoryBarChart({
   totals,
   categoryOrder,
+  selectedCategories,
+  onCategoryToggle,
 }: MonthCategoryBarChartProps) {
   const data = useMemo(() => {
     const extra = Object.keys(totals).filter(
@@ -74,10 +78,23 @@ export default function MonthCategoryBarChart({
           }}
           labelFormatter={label => String(label)}
         />
-        <Bar dataKey="amount" radius={[0, 4, 4, 0]} isAnimationActive={false}>
-          {data.map((_, i) => (
-            <Cell key={i} fill={COLORS[i % COLORS.length]} />
-          ))}
+        <Bar
+          dataKey="amount"
+          radius={[0, 4, 4, 0]}
+          isAnimationActive={false}
+          cursor={onCategoryToggle ? 'pointer' : undefined}
+          onClick={(barData) => onCategoryToggle?.((barData as unknown as { category: string }).category)}
+        >
+          {data.map((entry, i) => {
+            const active = !selectedCategories || selectedCategories.has(entry.category)
+            return (
+              <Cell
+                key={i}
+                fill={COLORS[i % COLORS.length]}
+                opacity={active ? 1 : 0.25}
+              />
+            )
+          })}
         </Bar>
       </BarChart>
     </ResponsiveContainer>

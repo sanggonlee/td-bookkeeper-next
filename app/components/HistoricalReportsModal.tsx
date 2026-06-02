@@ -333,6 +333,7 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
   const [selectedMonth, setSelectedMonth] = useState<string | null>(null)
   const [transactions, setTransactions] = useState<TransactionArchiveEntry[]>([])
   const [txLoading, setTxLoading] = useState(false)
+  const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set())
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -346,6 +347,13 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
       if (months.length > 0) {
         setSelectedMonth(months[months.length - 1])
       }
+      const cats = new Set<string>()
+      for (const totals of Object.values(data)) {
+        for (const k of Object.keys(totals)) {
+          if (k !== 'Total') cats.add(k)
+        }
+      }
+      setSelectedCategories(cats)
     } catch {
       setError('Could not load saved reports.')
       setHistory({})
@@ -384,6 +392,15 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
 
   const months = Object.keys(history).sort()
   const hasData = months.length > 0
+
+  function toggleCategory(cat: string) {
+    setSelectedCategories(prev => {
+      const next = new Set(prev)
+      if (next.has(cat)) next.delete(cat)
+      else next.add(cat)
+      return next
+    })
+  }
 
   const selectedTotals = selectedMonth ? (history[selectedMonth] ?? {}) : {}
   const categoryRows = Object.entries(selectedTotals).filter(([k]) => k !== 'Total')
@@ -450,7 +467,11 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
 
             <ChartSection>
               <ChartTitle>Spending by category (last 12 months)</ChartTitle>
-              <Chart history={history} />
+              <Chart
+                history={history}
+                selectedCategories={selectedCategories}
+                onCategoryToggle={toggleCategory}
+              />
             </ChartSection>
 
             {selectedMonth && (
@@ -513,7 +534,12 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
                 ) && (
                   <ChartSection style={{ margin: '0 0 24px' }}>
                     <ChartTitle>This month by category</ChartTitle>
-                    <MonthCategoryBarChart totals={selectedTotals} categoryOrder={[]} />
+                    <MonthCategoryBarChart
+                      totals={selectedTotals}
+                      categoryOrder={[]}
+                      selectedCategories={selectedCategories}
+                      onCategoryToggle={toggleCategory}
+                    />
                   </ChartSection>
                 )}
 
