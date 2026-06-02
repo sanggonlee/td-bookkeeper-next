@@ -313,6 +313,12 @@ const MONTH_NAMES = [
   'December',
 ]
 
+/** Format a signed net value where positive = inflow, negative = outflow. */
+function fmtNet(value: number): string {
+  if (value < 0) return `-$${Math.abs(value).toFixed(2)}`
+  return `$${value.toFixed(2)}`
+}
+
 function formatYearMonth(ym: string): string {
   const [y, m] = ym.split('-')
   const mi = parseInt(m, 10)
@@ -455,20 +461,20 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
                   <thead>
                     <tr>
                       <Th>Category</Th>
-                      <Th style={{ textAlign: 'right' }}>Net spending</Th>
+                      <Th style={{ textAlign: 'right' }}>Net</Th>
                     </tr>
                   </thead>
                   <tbody>
                     {categoryRows.map(([cat, val]) => (
                       <tr key={cat}>
                         <Td>{cat}</Td>
-                        <Td style={{ textAlign: 'right' }}>${val.toFixed(2)}</Td>
+                        <Td style={{ textAlign: 'right' }}>{fmtNet(-val)}</Td>
                       </tr>
                     ))}
                     <TotalRow>
                       <Td>Total</Td>
                       <Td style={{ textAlign: 'right' }}>
-                        ${(selectedTotals['Total'] ?? 0).toFixed(2)}
+                        {fmtNet(-(selectedTotals['Total'] ?? 0))}
                       </Td>
                     </TotalRow>
                   </tbody>
@@ -527,7 +533,7 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
                             <CategorySummaryLabel>{cat}</CategorySummaryLabel>
                             <CategorySummaryMeta>
                               {rows.length} line{rows.length === 1 ? '' : 's'} · Net{' '}
-                              <strong style={{ color: '#111' }}>${savedNet.toFixed(2)}</strong>
+                              <strong style={{ color: '#111' }}>{fmtNet(-savedNet)}</strong>
                             </CategorySummaryMeta>
                           </CategorySummary>
                           {rows.length > 0 ? (
@@ -544,7 +550,7 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
                               </thead>
                               <tbody>
                                 {rows.map((t, i) => {
-                                  const net = t.outflow - t.inflow
+                                  const net = t.inflow - t.outflow
                                   return (
                                     <tr key={`${t.date}-${t.description}-${i}`}>
                                       <DetailTd>{t.date}</DetailTd>
@@ -564,7 +570,7 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
                                         {t.outflow > 0 ? `$${t.outflow.toFixed(2)}` : '—'}
                                       </DetailTd>
                                       <DetailTd style={{ textAlign: 'right' }}>
-                                        ${net.toFixed(2)}
+                                        {fmtNet(net)}
                                       </DetailTd>
                                     </tr>
                                   )
@@ -580,7 +586,7 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
                                     ${rows.reduce((s, t) => s + t.outflow, 0).toFixed(2)}
                                   </DetailTd>
                                   <DetailTd style={{ textAlign: 'right' }}>
-                                    ${rows.reduce((s, t) => s + t.outflow - t.inflow, 0).toFixed(2)}
+                                    {fmtNet(rows.reduce((s, t) => s + t.inflow - t.outflow, 0))}
                                   </DetailTd>
                                 </DetailFoot>
                               </tfoot>
@@ -616,20 +622,20 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
                         <thead>
                           <tr>
                             <Th>Category</Th>
-                            <Th style={{ textAlign: 'right' }}>Net spending</Th>
+                            <Th style={{ textAlign: 'right' }}>Net</Th>
                           </tr>
                         </thead>
                         <tbody>
                           {rows.map(([cat, val]) => (
                             <tr key={cat}>
                               <Td>{cat}</Td>
-                              <Td style={{ textAlign: 'right' }}>${val.toFixed(2)}</Td>
+                              <Td style={{ textAlign: 'right' }}>{fmtNet(-val)}</Td>
                             </tr>
                           ))}
                           <TotalRow>
                             <Td>Total</Td>
                             <Td style={{ textAlign: 'right' }}>
-                              ${(totals['Total'] ?? 0).toFixed(2)}
+                              {fmtNet(-(totals['Total'] ?? 0))}
                             </Td>
                           </TotalRow>
                         </tbody>
