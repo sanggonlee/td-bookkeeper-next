@@ -418,8 +418,9 @@ export default function StepResults({
       k => k !== 'Total' && !patternOrder.includes(k)
     )
     const ordered = [...patternOrder, ...extra]
-    const values = ordered.map(k => (currentTotals[k] ?? 0).toFixed(2))
-    values.push((currentTotals['Total'] ?? 0).toFixed(2))
+    // History stores outflow − inflow; CSV expects inflow positive, outflow negative.
+    const values = ordered.map(k => (-(currentTotals[k] ?? 0)).toFixed(2))
+    values.push((-(currentTotals['Total'] ?? 0)).toFixed(2))
     return values.join(',')
   }
 

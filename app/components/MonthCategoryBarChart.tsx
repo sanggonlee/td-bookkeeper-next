@@ -37,7 +37,8 @@ export default function MonthCategoryBarChart({
       .filter(cat => (totals[cat] ?? 0) !== 0)
       .map(cat => ({
         category: cat,
-        amount: totals[cat] ?? 0,
+        // Stored as outflow − inflow; negate so inflow is positive, outflow negative.
+        amount: -(totals[cat] ?? 0),
       }))
   }, [totals, categoryOrder])
 
@@ -54,7 +55,11 @@ export default function MonthCategoryBarChart({
         <XAxis
           type="number"
           tick={{ fontSize: 11 }}
-          tickFormatter={v => `$${Number(v).toLocaleString(undefined, { maximumFractionDigits: 0 })}`}
+          tickFormatter={v => {
+            const n = Number(v)
+            const abs = Math.abs(n).toLocaleString(undefined, { maximumFractionDigits: 0 })
+            return n < 0 ? `-$${abs}` : `$${abs}`
+          }}
         />
         <YAxis
           type="category"
@@ -63,9 +68,10 @@ export default function MonthCategoryBarChart({
           tick={{ fontSize: 11 }}
         />
         <Tooltip
-          formatter={(value: unknown) =>
-            typeof value === 'number' ? `$${value.toFixed(2)}` : String(value ?? '')
-          }
+          formatter={(value: unknown) => {
+            if (typeof value !== 'number') return String(value ?? '')
+            return value < 0 ? `-$${Math.abs(value).toFixed(2)}` : `$${value.toFixed(2)}`
+          }}
           labelFormatter={label => String(label)}
         />
         <Bar dataKey="amount" radius={[0, 4, 4, 0]} isAnimationActive={false}>

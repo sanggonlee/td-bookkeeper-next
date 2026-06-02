@@ -89,7 +89,8 @@ export default function Chart({ history }: ChartProps) {
         monthLabel: formatMonthLabel(ym),
       }
       for (const cat of categories) {
-        entry[cat] = row[cat] ?? 0
+        // Stored as outflow − inflow; negate so inflow is positive, outflow negative.
+        entry[cat] = -(row[cat] ?? 0)
       }
       return entry
     })
@@ -113,13 +114,18 @@ export default function Chart({ history }: ChartProps) {
         />
         <YAxis
           tick={{ fontSize: 12 }}
-          tickFormatter={v => `$${Number(v).toLocaleString(undefined, { maximumFractionDigits: 0 })}`}
+          tickFormatter={v => {
+            const n = Number(v)
+            const abs = Math.abs(n).toLocaleString(undefined, { maximumFractionDigits: 0 })
+            return n < 0 ? `-$${abs}` : `$${abs}`
+          }}
           width={56}
         />
         <Tooltip
-          formatter={(value) =>
-            typeof value === 'number' ? `$${value.toFixed(2)}` : String(value)
-          }
+          formatter={(value) => {
+            if (typeof value !== 'number') return String(value)
+            return value < 0 ? `-$${Math.abs(value).toFixed(2)}` : `$${value.toFixed(2)}`
+          }}
           labelFormatter={(label) => String(label ?? '')}
         />
         <Legend
