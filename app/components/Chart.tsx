@@ -13,10 +13,14 @@ import {
 } from 'recharts'
 import type { HistoryFile } from '@/lib/types'
 
+export type ChartMode = 'absolute' | 'lastMonth' | 'avgThree'
+
 interface ChartProps {
   history: Record<string, HistoryFile>
   selectedCategories?: Set<string>
   onCategoryToggle?: (category: string) => void
+  chartMode?: ChartMode
+  categoryOrder?: string[]
 }
 
 const COLORS = [
@@ -64,11 +68,31 @@ function formatMonthLabel(ym: string): string {
   return `${MONTH_SHORT[p.m]} ${p.y}`
 }
 
-export default function Chart({ history, selectedCategories, onCategoryToggle }: ChartProps) {
-  const { data, categories } = useMemo(() => {
+/**
+ * Formats a delta value. If both current and base share the same sign
+ * (both inflow or both outflow), appends percent change in parentheses.
+ */
+function formatDelta(delta: number, current: number, base: number): string {
+  const sameSign = (current > 0 && base > 0) || (current < 0 && base < 0)
+  const absDelta = Math.abs(delta)
+  const sign = delta >= 0 ? '+' : '-'
+  const deltaStr = `${sign}$${absDelta.toFixed(2)}`
+  if (sameSign && base !== 0) {
+    const pct = Math.abs((delta / base) * 100).toFixed(1)
+    const pctSign = delta >= 0 ? '+' : '-'
+    return `${deltaStr} (${pctSign}${pct}%)`
+  }
+  return deltaStr
+}
+
+// tooltipLabels[monthKey][cat] = pre-formatted string shown in tooltip for delta modes
+type TooltipLabels = Record<string, Record<string, string>>
+
+export default function Chart({ history, selectedCategories, onCategoryToggle, chartMode = 'absolute', categoryOrder = [] }: ChartProps) {
+  const { data, categories, tooltipLabels } = useMemo(() => {
     const monthKeys = Object.keys(history).filter(k => parseYm(k) !== null).sort()
     if (monthKeys.length === 0) {
-      return { data: [] as Record<string, string | number>[], categories: [] as string[] }
+      return { data: [] as Record<string, number | string>[], categories: [] as string[], tooltipLabels: {} as TooltipLabels }
     }
 
     const endYm = monthKeys[monthKeys.length - 1]!
@@ -82,23 +106,62 @@ export default function Chart({ history, selectedCategories, onCategoryToggle }:
         if (key !== 'Total') catSet.add(key)
       }
     }
-    const categories = Array.from(catSet).sort((a, b) => a.localeCompare(b))
+    const inOrder = categoryOrder.filter(c => catSet.has(c))
+    const extra = Array.from(catSet).filter(c => !categoryOrder.includes(c)).sort((a, b) => a.localeCompare(b))
+    const categories = [...inOrder, ...extra]
 
-    const data = windowKeys.map(ym => {
+    // Raw stored values (negative = outflow, positive = inflow)
+    const rawByYm: Record<string, Record<string, number>> = {}
+    for (const ym of windowKeys) {
       const row = history[ym] ?? {}
-      const entry: Record<string, string | number> = {
+      rawByYm[ym] = {}
+      for (const cat of categories) {
+        rawByYm[ym][cat] = row[cat] ?? 0
+      }
+    }
+
+    const tooltipLabels: TooltipLabels = {}
+    const data = windowKeys.map((ym, idx) => {
+      const entry: Record<string, number | string> = {
         monthKey: ym,
         monthLabel: formatMonthLabel(ym),
       }
+      tooltipLabels[ym] = {}
       for (const cat of categories) {
-        // Stored as outflow − inflow; negate so inflow is positive, outflow negative.
-        entry[cat] = -(row[cat] ?? 0)
+        const raw = rawByYm[ym]![cat] ?? 0
+        if (chartMode === 'absolute') {
+          // Negate: inflow positive, outflow negative on chart
+          entry[cat] = -raw
+        } else if (chartMode === 'lastMonth') {
+          const prevYm = windowKeys[idx - 1]
+          if (prevYm === undefined) {
+            entry[cat] = 0
+            tooltipLabels[ym]![cat] = '—'
+          } else {
+            const prevRaw = rawByYm[prevYm]![cat] ?? 0
+            const delta = raw - prevRaw
+            entry[cat] = delta
+            tooltipLabels[ym]![cat] = formatDelta(delta, raw, prevRaw)
+          }
+        } else {
+          // avgThree: delta from average of up to 3 preceding months
+          const prevSlice = windowKeys.slice(Math.max(0, idx - 3), idx)
+          if (prevSlice.length === 0) {
+            entry[cat] = 0
+            tooltipLabels[ym]![cat] = '—'
+          } else {
+            const avg = prevSlice.reduce((s, k) => s + (rawByYm[k]![cat] ?? 0), 0) / prevSlice.length
+            const delta = raw - avg
+            entry[cat] = delta
+            tooltipLabels[ym]![cat] = formatDelta(delta, raw, avg)
+          }
+        }
       }
       return entry
     })
 
-    return { data, categories }
-  }, [history])
+    return { data, categories, tooltipLabels }
+  }, [history, chartMode, categoryOrder])
 
   if (data.length === 0 || categories.length === 0) return null
 
@@ -117,14 +180,22 @@ export default function Chart({ history, selectedCategories, onCategoryToggle }:
         <YAxis
           tick={{ fontSize: 12 }}
           tickFormatter={v => {
+            if (chartMode !== 'absolute') return String(v)
             const n = Number(v)
             const abs = Math.abs(n).toLocaleString(undefined, { maximumFractionDigits: 0 })
             return n < 0 ? `-$${abs}` : `$${abs}`
           }}
-          width={56}
+          width={chartMode === 'absolute' ? 56 : 0}
+          hide={chartMode !== 'absolute'}
         />
         <Tooltip
-          formatter={(value) => {
+          formatter={(value, name, props) => {
+            if (chartMode !== 'absolute') {
+              const ym = props.payload?.monthKey as string | undefined
+              if (ym && tooltipLabels[ym]) {
+                return tooltipLabels[ym]![name as string] ?? String(value)
+              }
+            }
             if (typeof value !== 'number') return String(value)
             return value < 0 ? `-$${Math.abs(value).toFixed(2)}` : `$${value.toFixed(2)}`
           }}

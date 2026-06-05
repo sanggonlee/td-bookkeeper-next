@@ -2,9 +2,9 @@
 
 import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import Chart from './Chart'
+import Chart, { type ChartMode } from './Chart'
 import MonthCategoryBarChart from './MonthCategoryBarChart'
-import type { HistoryFile, TransactionArchiveEntry } from '@/lib/types'
+import type { HistoryFile, PatternEntry, TransactionArchiveEntry } from '@/lib/types'
 
 interface HistoricalReportsModalProps {
   open: boolean
@@ -115,11 +115,46 @@ const ChartSection = styled.div`
   margin: 24px 0 32px;
 `
 
+const ChartTitleRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+`
+
 const ChartTitle = styled.h3`
   font-size: 1.05rem;
   font-weight: 600;
   color: #111;
-  margin: 0 0 14px;
+  margin: 0;
+`
+
+const ChartModeToggle = styled.div`
+  display: flex;
+  gap: 0;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  overflow: hidden;
+`
+
+const ChartModeBtn = styled.button<{ $active: boolean }>`
+  padding: 5px 12px;
+  border: none;
+  border-right: 1px solid #d1d5db;
+  background: ${p => (p.$active ? '#0070f3' : 'white')};
+  color: ${p => (p.$active ? 'white' : '#374151')};
+  font-size: 0.8rem;
+  font-weight: ${p => (p.$active ? '600' : '400')};
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  &:last-child {
+    border-right: none;
+  }
+  &:hover {
+    background: ${p => (p.$active ? '#0060df' : '#f3f4f6')};
+  }
 `
 
 const MonthDetailSection = styled.section`
@@ -334,14 +369,19 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
   const [transactions, setTransactions] = useState<TransactionArchiveEntry[]>([])
   const [txLoading, setTxLoading] = useState(false)
   const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set())
+  const [chartMode, setChartMode] = useState<ChartMode>('absolute')
+  const [categoryOrder, setCategoryOrder] = useState<string[]>([])
 
   const load = useCallback(async () => {
     setLoading(true)
     setError(null)
     try {
-      const res = await fetch('/api/history')
-      if (!res.ok) throw new Error('Failed to load history')
-      const data = (await res.json()) as Record<string, HistoryFile>
+      const [histRes, patternsRes] = await Promise.all([
+        fetch('/api/history'),
+        fetch('/api/patterns'),
+      ])
+      if (!histRes.ok) throw new Error('Failed to load history')
+      const data = (await histRes.json()) as Record<string, HistoryFile>
       setHistory(data)
       const months = Object.keys(data).sort()
       if (months.length > 0) {
@@ -354,6 +394,10 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
         }
       }
       setSelectedCategories(cats)
+      if (patternsRes.ok) {
+        const patterns = (await patternsRes.json()) as PatternEntry[]
+        setCategoryOrder(patterns.map(p => p.label))
+      }
     } catch {
       setError('Could not load saved reports.')
       setHistory({})
@@ -403,7 +447,16 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
   }
 
   const selectedTotals = selectedMonth ? (history[selectedMonth] ?? {}) : {}
-  const categoryRows = Object.entries(selectedTotals).filter(([k]) => k !== 'Total')
+
+  const categoryRows = (() => {
+    const all = Object.entries(selectedTotals).filter(([k]) => k !== 'Total')
+    if (categoryOrder.length === 0) return all
+    const inOrder = categoryOrder
+      .filter(c => selectedTotals[c] !== undefined)
+      .map(c => [c, selectedTotals[c]!] as [string, number])
+    const extra = all.filter(([k]) => !categoryOrder.includes(k))
+    return [...inOrder, ...extra]
+  })()
 
   const txByCategory = new Map<string, TransactionArchiveEntry[]>()
   for (const tx of transactions) {
@@ -412,9 +465,13 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
     else txByCategory.set(tx.category, [tx])
   }
 
-  const allCategories = Array.from(
-    new Set([...categoryRows.map(([k]) => k), ...txByCategory.keys()])
-  )
+  const allCategories = (() => {
+    const catSet = new Set([...categoryRows.map(([k]) => k), ...txByCategory.keys()])
+    if (categoryOrder.length === 0) return Array.from(catSet)
+    const inOrder = categoryOrder.filter(c => catSet.has(c))
+    const extra = Array.from(catSet).filter(c => !categoryOrder.includes(c))
+    return [...inOrder, ...extra]
+  })()
 
   const totalInflow = transactions.reduce((s, t) => s + t.inflow, 0)
   const totalOutflow = transactions.reduce((s, t) => s + t.outflow, 0)
@@ -466,11 +523,26 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
             </MonthPickerSection>
 
             <ChartSection>
-              <ChartTitle>Spending by category (last 12 months)</ChartTitle>
+              <ChartTitleRow>
+                <ChartTitle>Spending by category (last 12 months)</ChartTitle>
+                <ChartModeToggle>
+                  <ChartModeBtn $active={chartMode === 'absolute'} onClick={() => setChartMode('absolute')}>
+                    Absolute
+                  </ChartModeBtn>
+                  <ChartModeBtn $active={chartMode === 'lastMonth'} onClick={() => setChartMode('lastMonth')}>
+                    vs Last Month
+                  </ChartModeBtn>
+                  <ChartModeBtn $active={chartMode === 'avgThree'} onClick={() => setChartMode('avgThree')}>
+                    vs 3-Month Avg
+                  </ChartModeBtn>
+                </ChartModeToggle>
+              </ChartTitleRow>
               <Chart
                 history={history}
                 selectedCategories={selectedCategories}
                 onCategoryToggle={toggleCategory}
+                chartMode={chartMode}
+                categoryOrder={categoryOrder}
               />
             </ChartSection>
 
@@ -536,7 +608,7 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
                     <ChartTitle>This month by category</ChartTitle>
                     <MonthCategoryBarChart
                       totals={selectedTotals}
-                      categoryOrder={[]}
+                      categoryOrder={categoryOrder}
                       selectedCategories={selectedCategories}
                       onCategoryToggle={toggleCategory}
                     />
