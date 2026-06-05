@@ -196,6 +196,7 @@ export default function Chart({ history, selectedCategories, onCategoryToggle, c
           hide={chartMode !== 'absolute'}
         />
         <Tooltip
+          wrapperStyle={{ zIndex: 10 }}
           formatter={(value, name, props) => {
             if (chartMode !== 'absolute') {
               const ym = props.payload?.monthKey as string | undefined
@@ -209,7 +210,7 @@ export default function Chart({ history, selectedCategories, onCategoryToggle, c
           labelFormatter={(label) => String(label ?? '')}
         />
         <Legend
-          wrapperStyle={{ fontSize: 12, paddingTop: 12, cursor: 'pointer' }}
+          wrapperStyle={{ fontSize: 12, paddingTop: 12, cursor: 'pointer', zIndex: 1 }}
           layout="horizontal"
           verticalAlign="bottom"
           align="center"
