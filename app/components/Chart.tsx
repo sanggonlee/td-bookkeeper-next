@@ -69,17 +69,20 @@ function formatMonthLabel(ym: string): string {
 }
 
 /**
- * Formats a delta value. If both current and base share the same sign
- * (both inflow or both outflow), appends percent change in parentheses.
+ * Formats a delta between two displayed (negated) values.
+ * If both share the same sign, appends the percent change in parentheses.
+ * Percent sign is determined by delta/base so that same-direction magnitude
+ * growth always shows as positive (e.g. -$100 → -$110 gives -$10 (+10%)).
  */
-function formatDelta(delta: number, current: number, base: number): string {
-  const sameSign = (current > 0 && base > 0) || (current < 0 && base < 0)
-  const absDelta = Math.abs(delta)
-  const sign = delta >= 0 ? '+' : '-'
+function formatDelta(displayedDelta: number, displayedCurrent: number, displayedBase: number): string {
+  const sameSign = (displayedCurrent > 0 && displayedBase > 0) || (displayedCurrent < 0 && displayedBase < 0)
+  const absDelta = Math.abs(displayedDelta)
+  const sign = displayedDelta >= 0 ? '+' : '-'
   const deltaStr = `${sign}$${absDelta.toFixed(2)}`
-  if (sameSign && base !== 0) {
-    const pct = Math.abs((delta / base) * 100).toFixed(1)
-    const pctSign = delta >= 0 ? '+' : '-'
+  if (sameSign && displayedBase !== 0) {
+    const pctRatio = displayedDelta / displayedBase
+    const pct = Math.abs(pctRatio * 100).toFixed(1)
+    const pctSign = pctRatio >= 0 ? '+' : '-'
     return `${deltaStr} (${pctSign}${pct}%)`
   }
   return deltaStr
@@ -139,9 +142,11 @@ export default function Chart({ history, selectedCategories, onCategoryToggle, c
             tooltipLabels[ym]![cat] = '—'
           } else {
             const prevRaw = rawByYm[prevYm]![cat] ?? 0
-            const delta = raw - prevRaw
+            const displayed = -raw
+            const prevDisplayed = -prevRaw
+            const delta = displayed - prevDisplayed
             entry[cat] = delta
-            tooltipLabels[ym]![cat] = formatDelta(delta, raw, prevRaw)
+            tooltipLabels[ym]![cat] = formatDelta(delta, displayed, prevDisplayed)
           }
         } else {
           // avgThree: delta from average of up to 3 preceding months
@@ -150,10 +155,12 @@ export default function Chart({ history, selectedCategories, onCategoryToggle, c
             entry[cat] = 0
             tooltipLabels[ym]![cat] = '—'
           } else {
-            const avg = prevSlice.reduce((s, k) => s + (rawByYm[k]![cat] ?? 0), 0) / prevSlice.length
-            const delta = raw - avg
+            const avgRaw = prevSlice.reduce((s, k) => s + (rawByYm[k]![cat] ?? 0), 0) / prevSlice.length
+            const displayed = -raw
+            const avgDisplayed = -avgRaw
+            const delta = displayed - avgDisplayed
             entry[cat] = delta
-            tooltipLabels[ym]![cat] = formatDelta(delta, raw, avg)
+            tooltipLabels[ym]![cat] = formatDelta(delta, displayed, avgDisplayed)
           }
         }
       }
