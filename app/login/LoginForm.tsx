@@ -16,11 +16,17 @@ const Page = styled.div`
 const Card = styled.div`
   width: 100%;
   max-width: 360px;
+  margin: 0 16px;
   background: white;
   border: 1px solid #e5e7eb;
   border-radius: 14px;
-  padding: 40px 32px;
+  padding: 32px 24px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+
+  @media (min-width: 640px) {
+    margin: 0;
+    padding: 40px 32px;
+  }
 `
 
 const Logo = styled.h1`

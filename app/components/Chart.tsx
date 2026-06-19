@@ -173,7 +173,8 @@ export default function Chart({ history, selectedCategories, onCategoryToggle, c
   if (data.length === 0 || categories.length === 0) return null
 
   return (
-    <ResponsiveContainer width="100%" height={440}>
+    <div style={{ width: '100%', overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+    <ResponsiveContainer width="100%" height={380} minWidth={500}>
       <LineChart data={data} margin={{ top: 8, right: 8, left: 4, bottom: 72 }}>
         <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
         <XAxis
@@ -243,5 +244,6 @@ export default function Chart({ history, selectedCategories, onCategoryToggle, c
         ))}
       </LineChart>
     </ResponsiveContainer>
+    </div>
   )
 }

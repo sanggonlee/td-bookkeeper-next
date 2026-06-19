@@ -20,7 +20,11 @@ interface StepReviewProps {
 const Container = styled.div`
   max-width: 900px;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 24px 16px;
+
+  @media (min-width: 640px) {
+    padding: 40px 24px;
+  }
 `
 
 const Title = styled.h2`
@@ -36,14 +40,19 @@ const Progress = styled.p`
   margin-bottom: 24px;
 `
 
+const TableWrapper = styled.div`
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+`
+
 const Table = styled.table`
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
   font-size: 0.875rem;
   background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  overflow: hidden;
 `
 
 const Th = styled.th`
@@ -268,53 +277,55 @@ export default function StepReview({ transactions, onNext, onBack }: StepReviewP
         {resolvedCount} of {groups.length} description{groups.length !== 1 ? 's' : ''} resolved
       </Progress>
 
-      <Table>
-        <thead>
-          <tr>
-            <Th>Description</Th>
-            <Th>Date</Th>
-            <Th>Source</Th>
-            <Th>Inflow</Th>
-            <Th>Outflow</Th>
-            <Th>Category</Th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map(({ group, item, isFirst, rowSpan }, i) => {
-            const isAmbiguous = group.items.some(t => t.status === 'ambiguous')
-            const chosen = resolutions[group.description] ?? ''
-            return (
-              <tr key={i}>
-                <DescCell $firstInGroup={isFirst} $ambiguous={isAmbiguous} title={group.description}>
-                  {isAmbiguous && <AmbiguousDot title="Multiple pattern matches" />}
-                  {group.description}
-                </DescCell>
-                <Td $firstInGroup={isFirst}>{item.date}</Td>
-                <Td $firstInGroup={isFirst}>
-                  <SourceBadge $source={item.source}>{item.source.toUpperCase()}</SourceBadge>
-                </Td>
-                <Td $firstInGroup={isFirst}>{fmt(item.inflow)}</Td>
-                <Td $firstInGroup={isFirst}>{fmt(item.outflow)}</Td>
-
-                {isFirst && (
-                  <Td $firstInGroup rowSpan={rowSpan} style={{ minWidth: 160 }}>
-                    <CategorySelect
-                      $unset={!chosen}
-                      value={chosen}
-                      onChange={e => setCategory(group.description, e.target.value)}
-                    >
-                      <option value="">— select —</option>
-                      {categoriesForGroup(group).map(c => (
-                        <option key={c} value={c}>{c}</option>
-                      ))}
-                    </CategorySelect>
+      <TableWrapper>
+        <Table>
+          <thead>
+            <tr>
+              <Th>Description</Th>
+              <Th>Date</Th>
+              <Th>Source</Th>
+              <Th>Inflow</Th>
+              <Th>Outflow</Th>
+              <Th>Category</Th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(({ group, item, isFirst, rowSpan }, i) => {
+              const isAmbiguous = group.items.some(t => t.status === 'ambiguous')
+              const chosen = resolutions[group.description] ?? ''
+              return (
+                <tr key={i}>
+                  <DescCell $firstInGroup={isFirst} $ambiguous={isAmbiguous} title={group.description}>
+                    {isAmbiguous && <AmbiguousDot title="Multiple pattern matches" />}
+                    {group.description}
+                  </DescCell>
+                  <Td $firstInGroup={isFirst}>{item.date}</Td>
+                  <Td $firstInGroup={isFirst}>
+                    <SourceBadge $source={item.source}>{item.source.toUpperCase()}</SourceBadge>
                   </Td>
-                )}
-              </tr>
-            )
-          })}
-        </tbody>
-      </Table>
+                  <Td $firstInGroup={isFirst}>{fmt(item.inflow)}</Td>
+                  <Td $firstInGroup={isFirst}>{fmt(item.outflow)}</Td>
+
+                  {isFirst && (
+                    <Td $firstInGroup rowSpan={rowSpan} style={{ minWidth: 160 }}>
+                      <CategorySelect
+                        $unset={!chosen}
+                        value={chosen}
+                        onChange={e => setCategory(group.description, e.target.value)}
+                      >
+                        <option value="">— select —</option>
+                        {categoriesForGroup(group).map(c => (
+                          <option key={c} value={c}>{c}</option>
+                        ))}
+                      </CategorySelect>
+                    </Td>
+                  )}
+                </tr>
+              )
+            })}
+          </tbody>
+        </Table>
+      </TableWrapper>
 
       <ButtonRow>
         <BackButton onClick={onBack}>← Back</BackButton>

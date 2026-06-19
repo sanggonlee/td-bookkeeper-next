@@ -11,7 +11,11 @@ interface StepUploadProps {
 const Container = styled.div`
   max-width: 640px;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 24px 16px;
+
+  @media (min-width: 640px) {
+    padding: 40px 24px;
+  }
 `
 
 const Title = styled.h2`

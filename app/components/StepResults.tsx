@@ -19,7 +19,11 @@ interface StepResultsProps {
 const Container = styled.div`
   max-width: 900px;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 24px 16px;
+
+  @media (min-width: 640px) {
+    padding: 40px 24px;
+  }
 `
 
 const Title = styled.h2`
@@ -63,15 +67,21 @@ const TotalRow = styled.tr`
 
 const CsvRow = styled.div`
   font-family: 'Menlo', 'Monaco', 'Consolas', monospace;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   background: #f1f5f9;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
-  padding: 14px 16px;
+  padding: 12px 14px;
   color: #1e293b;
   word-break: break-all;
+  overflow-x: auto;
   margin-bottom: 28px;
   user-select: all;
+
+  @media (min-width: 640px) {
+    font-size: 0.85rem;
+    padding: 14px 16px;
+  }
 `
 
 const CsvHeader = styled.div`
@@ -244,8 +254,14 @@ const CategorySummaryMeta = styled.span`
   font-size: 0.85rem;
 `
 
+const DetailTableWrapper = styled.div`
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+`
+
 const DetailTable = styled.table`
   width: 100%;
+  min-width: 500px;
   border-collapse: collapse;
   font-size: 0.85rem;
 `
@@ -514,51 +530,53 @@ export default function StepResults({
                     </MismatchNote>
                   )}
                   {rows.length > 0 ? (
-                    <DetailTable>
-                      <thead>
-                        <tr>
-                          <DetailTh>Date</DetailTh>
-                          <DetailTh>Description</DetailTh>
-                          <DetailTh>Source</DetailTh>
-                          <DetailTh style={{ textAlign: 'right' }}>In</DetailTh>
-                          <DetailTh style={{ textAlign: 'right' }}>Out</DetailTh>
-                          <DetailTh style={{ textAlign: 'right' }}>Net</DetailTh>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {rows.map((t, i) => {
-                          const net = t.inflow - t.outflow
-                          return (
-                            <tr key={`${t.date}-${t.description}-${i}`}>
-                              <DetailTd>{t.date}</DetailTd>
-                              <DetailTd>{t.description}</DetailTd>
-                              <DetailTd style={{ textTransform: 'uppercase', fontSize: '0.8rem' }}>
-                                {t.source}
-                              </DetailTd>
-                              <DetailTd style={{ textAlign: 'right' }}>
-                                {t.inflow > 0 ? `$${t.inflow.toFixed(2)}` : '—'}
-                              </DetailTd>
-                              <DetailTd style={{ textAlign: 'right' }}>
-                                {t.outflow > 0 ? `$${t.outflow.toFixed(2)}` : '—'}
-                              </DetailTd>
-                              <DetailTd style={{ textAlign: 'right' }}>{fmtNet(net)}</DetailTd>
-                            </tr>
-                          )
-                        })}
-                      </tbody>
-                      <tfoot>
-                        <DetailFoot>
-                          <DetailTd colSpan={3}>Subtotal ({rows.length})</DetailTd>
-                          <DetailTd style={{ textAlign: 'right' }}>
-                            ${rows.reduce((s, t) => s + t.inflow, 0).toFixed(2)}
-                          </DetailTd>
-                          <DetailTd style={{ textAlign: 'right' }}>
-                            ${rows.reduce((s, t) => s + t.outflow, 0).toFixed(2)}
-                          </DetailTd>
-                          <DetailTd style={{ textAlign: 'right' }}>{fmtNet(-sumNet)}</DetailTd>
-                        </DetailFoot>
-                      </tfoot>
-                    </DetailTable>
+                    <DetailTableWrapper>
+                      <DetailTable>
+                        <thead>
+                          <tr>
+                            <DetailTh>Date</DetailTh>
+                            <DetailTh>Description</DetailTh>
+                            <DetailTh>Source</DetailTh>
+                            <DetailTh style={{ textAlign: 'right' }}>In</DetailTh>
+                            <DetailTh style={{ textAlign: 'right' }}>Out</DetailTh>
+                            <DetailTh style={{ textAlign: 'right' }}>Net</DetailTh>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {rows.map((t, i) => {
+                            const net = t.inflow - t.outflow
+                            return (
+                              <tr key={`${t.date}-${t.description}-${i}`}>
+                                <DetailTd>{t.date}</DetailTd>
+                                <DetailTd>{t.description}</DetailTd>
+                                <DetailTd style={{ textTransform: 'uppercase', fontSize: '0.8rem' }}>
+                                  {t.source}
+                                </DetailTd>
+                                <DetailTd style={{ textAlign: 'right' }}>
+                                  {t.inflow > 0 ? `$${t.inflow.toFixed(2)}` : '—'}
+                                </DetailTd>
+                                <DetailTd style={{ textAlign: 'right' }}>
+                                  {t.outflow > 0 ? `$${t.outflow.toFixed(2)}` : '—'}
+                                </DetailTd>
+                                <DetailTd style={{ textAlign: 'right' }}>{fmtNet(net)}</DetailTd>
+                              </tr>
+                            )
+                          })}
+                        </tbody>
+                        <tfoot>
+                          <DetailFoot>
+                            <DetailTd colSpan={3}>Subtotal ({rows.length})</DetailTd>
+                            <DetailTd style={{ textAlign: 'right' }}>
+                              ${rows.reduce((s, t) => s + t.inflow, 0).toFixed(2)}
+                            </DetailTd>
+                            <DetailTd style={{ textAlign: 'right' }}>
+                              ${rows.reduce((s, t) => s + t.outflow, 0).toFixed(2)}
+                            </DetailTd>
+                            <DetailTd style={{ textAlign: 'right' }}>{fmtNet(-sumNet)}</DetailTd>
+                          </DetailFoot>
+                        </tfoot>
+                      </DetailTable>
+                    </DetailTableWrapper>
                   ) : (
                     <p style={{ margin: '0 14px 12px', fontSize: '0.85rem', color: '#888' }}>
                       No transactions in this category for the selected month (total may be carried

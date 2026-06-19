@@ -49,7 +49,8 @@ export default function MonthCategoryBarChart({
   if (data.length === 0) return null
 
   return (
-    <ResponsiveContainer width="100%" height={Math.min(520, 120 + data.length * 36)}>
+    <div style={{ width: '100%', overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+    <ResponsiveContainer width="100%" height={Math.min(520, 120 + data.length * 36)} minWidth={400}>
       <BarChart
         data={data}
         layout="vertical"
@@ -68,8 +69,8 @@ export default function MonthCategoryBarChart({
         <YAxis
           type="category"
           dataKey="category"
-          width={168}
-          tick={{ fontSize: 11 }}
+          width={120}
+          tick={{ fontSize: 10 }}
         />
         <Tooltip
           formatter={(value: unknown) => {
@@ -98,5 +99,6 @@ export default function MonthCategoryBarChart({
         </Bar>
       </BarChart>
     </ResponsiveContainer>
+    </div>
   )
 }

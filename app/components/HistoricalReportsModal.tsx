@@ -19,17 +19,28 @@ const Overlay = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 32px 16px 48px;
+  padding: 0;
   overflow-y: auto;
+
+  @media (min-width: 640px) {
+    padding: 32px 16px 48px;
+  }
 `
 
 const Panel = styled.div`
   background: #fff;
-  border-radius: 12px;
+  border-radius: 0;
   max-width: 900px;
   width: 100%;
+  min-height: 100vh;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  padding: 28px 24px 32px;
+  padding: 20px 16px 32px;
+
+  @media (min-width: 640px) {
+    border-radius: 12px;
+    min-height: auto;
+    padding: 28px 24px 32px;
+  }
 `
 
 const Header = styled.div`
@@ -92,6 +103,9 @@ const MonthChips = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
 `
 
 const MonthChip = styled.button<{ $active: boolean }>`
@@ -117,11 +131,17 @@ const ChartSection = styled.div`
 
 const ChartTitleRow = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
   margin-bottom: 14px;
-  flex-wrap: wrap;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 `
 
 const ChartTitle = styled.h3`
@@ -255,11 +275,11 @@ const CategorySummary = styled.summary`
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
-  gap: 8px 16px;
-  padding: 10px 14px;
+  gap: 4px 12px;
+  padding: 10px 12px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #111;
   background: #f9fafb;
   list-style: none;
@@ -269,10 +289,16 @@ const CategorySummary = styled.summary`
   &::before {
     content: '▸';
     display: inline-block;
-    margin-right: 8px;
+    margin-right: 6px;
     color: #64748b;
     transition: transform 0.15s;
     flex-shrink: 0;
+  }
+
+  @media (min-width: 640px) {
+    gap: 8px 16px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
   }
 `
 
@@ -291,8 +317,14 @@ const CategorySummaryMeta = styled.span`
   font-size: 0.85rem;
 `
 
+const DetailTableWrapper = styled.div`
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+`
+
 const DetailTable = styled.table`
   width: 100%;
+  min-width: 500px;
   border-collapse: collapse;
   font-size: 0.82rem;
 `
@@ -635,45 +667,46 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
                             </CategorySummaryMeta>
                           </CategorySummary>
                           {rows.length > 0 ? (
-                            <DetailTable>
-                              <thead>
-                                <tr>
-                                  <DetailTh>Date</DetailTh>
-                                  <DetailTh>Description</DetailTh>
-                                  <DetailTh>Source</DetailTh>
-                                  <DetailTh style={{ textAlign: 'right' }}>In</DetailTh>
-                                  <DetailTh style={{ textAlign: 'right' }}>Out</DetailTh>
-                                  <DetailTh style={{ textAlign: 'right' }}>Net</DetailTh>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {rows.map((t, i) => {
-                                  const net = t.inflow - t.outflow
-                                  return (
-                                    <tr key={`${t.date}-${t.description}-${i}`}>
-                                      <DetailTd>{t.date}</DetailTd>
-                                      <DetailTd>{t.description}</DetailTd>
-                                      <DetailTd
-                                        style={{
-                                          textTransform: 'uppercase',
-                                          fontSize: '0.78rem',
-                                        }}
-                                      >
-                                        {t.source}
-                                      </DetailTd>
-                                      <DetailTd style={{ textAlign: 'right' }}>
-                                        {t.inflow > 0 ? `$${t.inflow.toFixed(2)}` : '—'}
-                                      </DetailTd>
-                                      <DetailTd style={{ textAlign: 'right' }}>
-                                        {t.outflow > 0 ? `$${t.outflow.toFixed(2)}` : '—'}
-                                      </DetailTd>
-                                      <DetailTd style={{ textAlign: 'right' }}>
-                                        {fmtNet(net)}
-                                      </DetailTd>
-                                    </tr>
-                                  )
-                                })}
-                              </tbody>
+                            <DetailTableWrapper>
+                              <DetailTable>
+                                <thead>
+                                  <tr>
+                                    <DetailTh>Date</DetailTh>
+                                    <DetailTh>Description</DetailTh>
+                                    <DetailTh>Source</DetailTh>
+                                    <DetailTh style={{ textAlign: 'right' }}>In</DetailTh>
+                                    <DetailTh style={{ textAlign: 'right' }}>Out</DetailTh>
+                                    <DetailTh style={{ textAlign: 'right' }}>Net</DetailTh>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {rows.map((t, i) => {
+                                    const net = t.inflow - t.outflow
+                                    return (
+                                      <tr key={`${t.date}-${t.description}-${i}`}>
+                                        <DetailTd>{t.date}</DetailTd>
+                                        <DetailTd>{t.description}</DetailTd>
+                                        <DetailTd
+                                          style={{
+                                            textTransform: 'uppercase',
+                                            fontSize: '0.78rem',
+                                          }}
+                                        >
+                                          {t.source}
+                                        </DetailTd>
+                                        <DetailTd style={{ textAlign: 'right' }}>
+                                          {t.inflow > 0 ? `$${t.inflow.toFixed(2)}` : '—'}
+                                        </DetailTd>
+                                        <DetailTd style={{ textAlign: 'right' }}>
+                                          {t.outflow > 0 ? `$${t.outflow.toFixed(2)}` : '—'}
+                                        </DetailTd>
+                                        <DetailTd style={{ textAlign: 'right' }}>
+                                          {fmtNet(net)}
+                                        </DetailTd>
+                                      </tr>
+                                    )
+                                  })}
+                                </tbody>
                               <tfoot>
                                 <DetailFoot>
                                   <DetailTd colSpan={3}>Subtotal ({rows.length})</DetailTd>
@@ -688,7 +721,8 @@ export default function HistoricalReportsModal({ open, onClose }: HistoricalRepo
                                   </DetailTd>
                                 </DetailFoot>
                               </tfoot>
-                            </DetailTable>
+                              </DetailTable>
+                            </DetailTableWrapper>
                           ) : (
                             <p
                               style={{

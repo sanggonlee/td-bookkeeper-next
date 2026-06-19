@@ -19,10 +19,14 @@ const Shell = styled.div`
 const Header = styled.header`
   background: white;
   border-bottom: 1px solid #e5e7eb;
-  padding: 16px 24px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   gap: 12px;
+
+  @media (min-width: 640px) {
+    padding: 16px 24px;
+  }
 `
 
 const Logo = styled.h1`
@@ -52,7 +56,11 @@ const StepDot = styled.div<{ $active: boolean; $done: boolean }>`
 `
 
 const Main = styled.main`
-  padding: 24px 0;
+  padding: 16px 0;
+
+  @media (min-width: 640px) {
+    padding: 24px 0;
+  }
 `
 
 type WizardState = {
